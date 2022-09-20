@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import styled from 'styled-components';
+import Header from "../Header";
 
 const UserCardContainer = styled.div`
     margin-top: 4rem;
@@ -123,11 +124,11 @@ export function FindFriends() {
 
     return (
         <>
-            <header>I will be the header</header>
+            <Header/>
             <UserCardContainer>
                 {
                     users.map((user) => {
-                        return <UserCard key={user} className="userCard">
+                        return <UserCard key={user}>
                             <img src={user.avatar} width='100'></img>
                             <NamingContainer>
                                 <span>{user.firstname}</span>
