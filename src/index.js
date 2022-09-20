@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import  store from './redux/Store'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { FindFriends } from './components/FindFriends/FindFriends';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,6 +14,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/findfriends" element={<FindFriends />} />
       </Routes>
     </BrowserRouter>
   </Provider>
