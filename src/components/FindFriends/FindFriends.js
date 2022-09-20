@@ -38,9 +38,9 @@ const LocationContainer = styled.div`
 
 
 const SocialActionsContainer = styled.div`
- width: 60%;
  display: flex;
- justify-content: space-around;
+ justify-content: center;
+ gap: 1rem;
  
     button {
         border-radius: 3rem;
