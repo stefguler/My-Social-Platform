@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
+import Navigation from './Navigation/Navigation'
+import Dropdown from './Dropdown/Dropdown';
 
 const HeaderContainer = styled.header`
     padding: 1rem;
@@ -12,16 +14,21 @@ const HeaderContainer = styled.header`
     font-weight: 400;
 
     span {
-        font-size: 16px;
+        font-size: 22px;
         margin-right: 4rem;
         cursor: pointer;
     }
-`
 
+    img {
+ 
+    }
+
+`
 const HeaderLeftContainer = styled.div`
     padding: 0 2rem;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 1rem;
 
     i {
@@ -29,11 +36,6 @@ const HeaderLeftContainer = styled.div`
         color: lightgray;
     }
 
-    #title {
-        margin-right: 7rem;
-        font-size: 20px;
-    }
-    
 `
 const HeaderRightContainer = styled.div`
     padding: 0 1rem;
@@ -87,59 +89,29 @@ const NotificationContainer = styled.div`
     cursor: pointer;
 `
 
-// const DropdownContentContainer = styled.div`
-//     padding: 1rem;
-//     width: 12rem;
-//     height: 3rem;
-//     border: 1px black solid;
-
-//     div {
-//         margin-top: 0.2rem;
-//     }
-
-//     i {
-//         color: lightgray;
-
-//     }
-
-// `
-
-
 export default function Header() {
 
+    const navigate = useNavigate();
 
     return (
         <>
             <HeaderContainer>
+
                 <HeaderLeftContainer>
-                    <img src='Logosvg_motion.svg' width='100'></img>
-                    <span id='title'>Motion</span>
-                    <img src='Grouplogo_posts.svg'></img>
-                    <span>Posts</span>
-                    <i class="fa-solid fa-user-group"></i>
-                    <span>Find Friends</span>
+                    <img src='Logosvg_motion.svg' width='60' ></img>
+                    <span onClick ={() => navigate('/')}> Motion</span>
+                <Navigation>
+                </Navigation>
+
                 </HeaderLeftContainer>
+
                 <HeaderRightContainer>
                     <i id='bell' class="fa-solid fa-bell"></i>
                     <NotificationContainer>
                         1</NotificationContainer>
                     <img src='femaleAvatar.jpg' width="30"></img>
+                    {/* <Dropdown/> */}
                     <i class="fa-solid fa-ellipsis-vertical"></i>
-                    {/* <div className='dropdown'>
-                        <button className='dropbtn'>
-        
-                        </button>
-                        <DropdownContentContainer>
-                            <div className='profileMenu'>
-                                <i class="fa-regular fa-user"></i>
-                                <span>Profile</span>
-                            </div>
-                            <div className='logoutMenu'>
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                                <span>Logout</span>
-                            </div>
-                        </DropdownContentContainer>
-                    </div> */}
                 </HeaderRightContainer>
             </HeaderContainer>
         </>

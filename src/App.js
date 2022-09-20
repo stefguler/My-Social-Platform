@@ -1,10 +1,12 @@
 import './App.css';
-import {FindFriends} from './components/FindFriends/FindFriends'
+
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <FindFriends />
+      <Header/>
+      <h1>Welcome!</h1>
     </div>
   );
 }
