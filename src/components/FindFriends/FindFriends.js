@@ -3,19 +3,23 @@ import styled from 'styled-components';
 import Header from "../Header";
 
 const UserCardContainer = styled.div`
-    margin-top: 4rem;
+    background: lightgrey;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     font-family: 'Luckiest Guy', cursive;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    gap: 5rem 0;
+    gap: 1rem 1rem;
+    padding: 1rem 10rem;
     
 `
 const UserCard = styled.div`
+    /* margin-top: 1rem; */
     display: flex;
+    Background: white;
     flex-direction: column;
     align-items: center;
+    padding: 2rem;
 
     img {
         border-radius: 50%
@@ -71,6 +75,10 @@ const LabelContainer = styled.div`
     span {
         font-size: 14px;
     }
+`
+
+const BackgroundContainer = styled.div`
+    background: gray;
 `
 
 

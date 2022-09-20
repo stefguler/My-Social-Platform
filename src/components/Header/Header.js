@@ -39,7 +39,7 @@ const HeaderRightContainer = styled.div`
     padding: 0 1rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    margin-right: 3rem;
 
     i {
         color: black;
@@ -51,10 +51,11 @@ const HeaderRightContainer = styled.div`
     #bell {
         font-size: 20px;
         color: lightgray;
-        padding-right: 3rem;
+        padding-right: 0;
     }
 
     img {
+        margin-right: 1rem;
         cursor: pointer;
     }
 
@@ -62,9 +63,15 @@ const HeaderRightContainer = styled.div`
         border: none;
     }
 
+    i {
+        color: lightgray;
+    }
+
 `
 
 const NotificationContainer = styled.div`
+    align-self: flex-start;
+    margin-right: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,29 +81,28 @@ const NotificationContainer = styled.div`
     color: white;
     background: linear-gradient(45deg, #C468FF, #6E91F6 );
     border-radius: 50%;
-    position: absolute;
-    left: 74.8rem;
-    top: 1.3rem;
+    /* position: absolute;
+    left: 74.8rem; */
+    /* top: 1.3rem; */
     cursor: pointer;
-
 `
 
-const DropdownContentContainer = styled.div`
-    padding: 1rem;
-    width: 12rem;
-    height: 3rem;
-    border: 1px black solid;
+// const DropdownContentContainer = styled.div`
+//     padding: 1rem;
+//     width: 12rem;
+//     height: 3rem;
+//     border: 1px black solid;
 
-    div {
-        margin-top: 0.2rem;
-    }
+//     div {
+//         margin-top: 0.2rem;
+//     }
 
-    i {
-        color: lightgray;
+//     i {
+//         color: lightgray;
 
-    }
+//     }
 
-`
+// `
 
 
 export default function Header() {
