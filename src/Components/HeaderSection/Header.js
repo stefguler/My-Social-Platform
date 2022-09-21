@@ -64,7 +64,6 @@ const NotificationCircle = styled.div`
     left: 0.9rem;
     bottom: 0.5rem;
 `;
-
 const ProfileContainer = styled.div`
     display: flex;
     align-items: center;
@@ -84,7 +83,6 @@ const ProfileContainer = styled.div`
         color: black;
     }
 `
-
 export default function Header() {
 
     const navigate = useNavigate();
