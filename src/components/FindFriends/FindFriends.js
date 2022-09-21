@@ -4,13 +4,18 @@ import Header from "../Header";
 
 const UserCardContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: minmax(auto, 23rem) 1fr 1fr;
     font-family: 'Luckiest Guy', cursive;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     gap: 1rem 1rem;
-    padding: 1rem auto;    
+    padding: 1rem; 
+    margin: 0 auto;
 `
+
 const UserCard = styled.div`
     /* margin-top: 1rem; */
     display: flex;

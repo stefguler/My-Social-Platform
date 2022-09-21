@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const NavComponent = styled.nav`
     display: flex;
+    min-height: 100%;
 `
 
 const UlComponent = styled.ul`
@@ -24,23 +25,33 @@ const LIComponent = styled.li`
     }
 `
 
+const NavigationContainer = styled.div`
+    display: flex;
+    min-width: 100%;
+    min-height: 100%;
+    gap: 1rem;
+    align-items: center;
+
+`
+
 export default function NavList() {
 
     return (
         <NavComponent>
             <UlComponent>
                 <LIComponent>
-                    <img src='Grouplogo_posts.svg' with='50'></img>
                     <NavLink
                         to="/posts"
                         style={({ isActive }) => ({
                             borderBottom: isActive ? '1px #C468FF solid' : 'none', 
                            })}
                     >
+                        <img src='Grouplogo_posts.svg' with='50'></img>
                         Posts
                     </NavLink>
                 </LIComponent>
                 <LIComponent>
+                    <NavigationContainer>
                     <i class="fa-solid fa-user-group"></i>
                     <NavLink
                         to="/findFriends"
@@ -50,6 +61,7 @@ export default function NavList() {
                     >
                         Find Friends
                     </NavLink>
+                    </NavigationContainer>
                 </LIComponent>
             </UlComponent>
         </NavComponent>
