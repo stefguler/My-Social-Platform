@@ -107,7 +107,8 @@ export default function Header() {
 
                     <ProfileContainer>
                         <img src='femaleAvatar.jpg' width="47.5" height='42.5' onClick={() => navigate('/profile')}></img>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        {/* <i class="fa-solid fa-ellipsis-vertical"></i> */}
+                        <Dropdown/>
                     </ProfileContainer>
                 </HeaderRightContainer>
             </HeaderContainer>
