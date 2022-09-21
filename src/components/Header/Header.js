@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation/Navigation'
 import Dropdown from './Dropdown/Dropdown';
 
 const HeaderContainer = styled.header`
-    padding: 1rem;
+    background: white;
     display: flex;
+    height: 80px;
     width: 100%;
     justify-content: space-between;
     font-family: 'Luckiest Guy', cursive;
