@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { ButtonQuestion, ButtonsContainer, ButtonSignUp, FormContainer, FormStyledIcon, FormSubmit, FormTitle, Frame4, PageDots, RightContainer, Space, StyledInput, FormSubmitButton, ButtonSignUpButton, FormRegisterEmail, UncoloredDot, ColoredDot } from "./Page2.styles"
-import { AiOutlineMail } from 'react-icons/ai'
 import { GoPrimitiveDot } from 'react-icons/go'
 import { MdEmail } from 'react-icons/md'
 
@@ -62,7 +61,7 @@ function Page2() {
                 <form onSubmit={handleSubmit}>
                     <FormRegisterEmail>
                         <FormStyledIcon>
-                            <AiOutlineMail size={20}/>
+                            <MdEmail size={20}/>
                         </FormStyledIcon>
                         <Space />
 
