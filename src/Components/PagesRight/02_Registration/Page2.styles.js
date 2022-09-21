@@ -94,9 +94,7 @@ export const FormRegisterEmail = styled.div`
 export const Frame4 = styled.div`
     display: flex;
     flex-direction: column;
-    justify-contents: center;
     align-items: center;
-
 `
 
 export const FormSubmit = styled.div`
@@ -124,7 +122,6 @@ export const FormSubmitButton = styled.button`
 export const PageDots = styled.div`
     display: flex;
     flex-direction: row;
-    justify-contents: center;
     align-items: center;
 `
 
