@@ -9,8 +9,8 @@
   text-align: center;
 }
 
-.App-container {
-  min-width: 100vw;
+#root {
   min-height: 100vh;
-  display: flex;
+  min-width: 100vw;
+  background-color: #F8F8F9;
 }

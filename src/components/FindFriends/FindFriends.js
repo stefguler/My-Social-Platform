@@ -3,23 +3,28 @@ import styled from 'styled-components';
 import Header from "../Header";
 
 const UserCardContainer = styled.div`
-    background: lightgrey;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: minmax(auto, 23rem) 1fr 1fr;
     font-family: 'Luckiest Guy', cursive;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     gap: 1rem 1rem;
-    padding: 1rem 10rem;
-    
+    padding: 1rem; 
+    margin: 0 auto;
 `
+
 const UserCard = styled.div`
     /* margin-top: 1rem; */
     display: flex;
-    Background: white;
+    background: white;
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    height: 489px;
+    width: 362px;
 
     img {
         border-radius: 50%
@@ -32,7 +37,6 @@ const NamingContainer = styled.div`
     gap: 0.5rem;
     font-size: 22px;
 `;
-
 
 const LocationContainer = styled.div`
     display: flex;
