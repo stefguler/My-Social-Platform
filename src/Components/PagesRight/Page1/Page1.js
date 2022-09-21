@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { ButtonQuestion, ButtonsContainer, ButtonSignUp, FormContainer, FormEmail, FormPassword, FormStyledIcon, FormSubmit, FormTitle, FormUserName, Frame4, PageDots, RightContainer, Space, StyledInput, FormSubmitButton, ButtonSignUpButton } from "./Page1.styles"
 import { FaUserCircle, FaLock } from "react-icons/fa"
+import {useNavigate} from 'react-router-dom'
 
 function Page1() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const navigate = useNavigate();
 
 
     const handleEmailChange = (e) => {
@@ -43,7 +45,7 @@ function Page1() {
                         Don't have an account?
                     </p>
                 </ButtonQuestion>
-                <ButtonSignUp>
+                <ButtonSignUp onClick={() => navigate('/signup')}>
                     <ButtonSignUpButton>
                         SIGN UP
                     </ButtonSignUpButton>

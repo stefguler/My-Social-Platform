@@ -1,5 +1,5 @@
 import { LeftContainer, LogoContainer, StoreContainer, SocialLinksContainer, LogoWrapper, LogoMotion, LogoP, LogoImg, StoreIcon1, StoreIcon2, Gap, SocialLinksWrapper, FooterContainer, AppStore, IconUp, IconDown } from './PageLeft.styles'
-import logo from "../../images/logo_white.png"
+import logo from '../../assets/images/logo_white.png'
 import { ImAppleinc } from 'react-icons/im'
 import { FaGooglePlay } from 'react-icons/fa'
 import { AiFillTwitterCircle, AiFillInstagram } from 'react-icons/ai'
