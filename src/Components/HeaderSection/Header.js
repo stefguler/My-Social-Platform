@@ -15,12 +15,8 @@ const HeaderContainer = styled.header`
 
     span {
         font-size: 22px;
-        margin-right: 4rem;
+        margin-right: 6rem;
         cursor: pointer;
-    }
-
-    img {
- 
     }
 
 `
@@ -38,55 +34,55 @@ const HeaderLeftContainer = styled.div`
 
 `
 const HeaderRightContainer = styled.div`
-    padding: 0 1rem;
     display: flex;
     align-items: center;
     margin-right: 3rem;
+    gap: 2rem;
+`
+const NotificationContainer = styled.div`
+    position: relative;
+    margin-right: 3rem;
 
     i {
-        color: black;
-        padding: 0 1rem;
-        cursor: pointer;
-        font-size: 22px;
-    }
-
-    #bell {
         font-size: 20px;
         color: lightgray;
-        padding-right: 0;
-    }
-
-    img {
-        margin-right: 1rem;
         cursor: pointer;
     }
-
-    button {
-        border: none;
-    }
-
-    i {
-        color: lightgray;
-    }
-
 `
-
-const NotificationContainer = styled.div`
-    align-self: flex-start;
-    margin-right: 2rem;
+const NotificationCircle = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1rem;
-    height: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
     font-size: 8px;
     color: white;
     background: linear-gradient(45deg, #C468FF, #6E91F6 );
     border-radius: 50%;
-    /* position: absolute;
-    left: 74.8rem; */
-    /* top: 1.3rem; */
-    cursor: pointer;
+    position: absolute;
+    border: 2.5px white solid;
+    left: 0.9rem;
+    bottom: 0.5rem;
+`;
+
+const ProfileContainer = styled.div`
+    display: flex;
+    align-items: center;
+ 
+    button {
+        border: none;
+    }
+
+    img {
+        border-radius: 50%;
+        margin-right: 2rem;
+        cursor: pointer;
+    }
+
+    i {
+        font-size: 20px;
+        color: black;
+    }
 `
 
 export default function Header() {
@@ -96,22 +92,25 @@ export default function Header() {
     return (
         <>
             <HeaderContainer>
-
                 <HeaderLeftContainer>
-                    <img src='Logosvg_motion.svg' width='60' ></img>
-                    <span onClick ={() => navigate('/')}> Motion</span>
-                <Navigation>
-                </Navigation>
+                    <img src='Logo@3x.png' width='26' height='26' ></img>
+                    <span onClick={() => navigate('/')}> Motion</span>
+                    <Navigation>
+                    </Navigation>
 
                 </HeaderLeftContainer>
 
                 <HeaderRightContainer>
-                    <i id='bell' class="fa-solid fa-bell"></i>
+
                     <NotificationContainer>
-                        1</NotificationContainer>
-                    <img src='femaleAvatar.jpg' width="30"></img>
-                    {/* <Dropdown/> */}
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <NotificationCircle>1</NotificationCircle>
+                        <i class="fa-solid fa-bell"></i>
+                    </NotificationContainer>
+
+                    <ProfileContainer>
+                        <img src='femaleAvatar.jpg' width="47.5" height='42.5' onClick={() => navigate('/profile')}></img>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </ProfileContainer>
                 </HeaderRightContainer>
             </HeaderContainer>
         </>
