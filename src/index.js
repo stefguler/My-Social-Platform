@@ -14,9 +14,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/findfriends" element={<FindFriends />} />
-        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </BrowserRouter>
   </Provider>
-
 );
