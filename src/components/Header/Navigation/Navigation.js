@@ -63,6 +63,18 @@ export default function NavList() {
                     </NavLink>
                     </NavigationContainer>
                 </LIComponent>
+                <LIComponent>
+                    <NavigationContainer>
+                    <NavLink
+                        to="/profile"
+                        style={({ isActive }) => ({
+                            borderBottom: isActive ? '1px #C468FF solid' : 'none', 
+                           })}
+                    >
+                        profile section
+                    </NavLink>
+                    </NavigationContainer>
+                </LIComponent>
             </UlComponent>
         </NavComponent>
     );

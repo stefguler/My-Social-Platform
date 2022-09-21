@@ -8,12 +8,13 @@ const Post = ({ avatar, name, surname, description, postImages, likeIcon, shareI
     height: 750px;
     background-color: #f2f2f2;
     border-radius: 4px;
-  `;
+  `
   const Container = styled.div`
-    background-color: #fffff;
+    background-color: '#fffff';
     width: 100%;
     height: 100%;
-  `;
+  `
+
   const PostHead = styled.div`
     width: 500px;
     height: 50px;
@@ -41,7 +42,7 @@ const Post = ({ avatar, name, surname, description, postImages, likeIcon, shareI
     align-items: flex-start;
   `;
   const Name = styled.p`
-    color: #0000000;
+    color: '#0000000';
     font-size: 15px;
     margin: 0 !important;
   `;
@@ -88,7 +89,7 @@ const Post = ({ avatar, name, surname, description, postImages, likeIcon, shareI
   place-items: center;
   margin: 20px auto;
   grid-gap: 20px;
-  width: 500px
+  width: 500px;
   `
   
   const PhotoGrid = styled.img`
