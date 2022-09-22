@@ -1,14 +1,13 @@
-import Header from "../HeaderSection";
-import User_posts from "./UserPosts/UserPosts";
+import ProfileInfo from "./Profile_header/ProfileInfo";
+import User_posts from "./User_posts/User_posts";
 
 
 export default function ProfileSection() {
 
-  return(
+  return (
     <>
-    <Header/>
-    <User_posts/>
+        <ProfileInfo />
+        <User_posts />
     </>
-  )
-
+  );
 }
