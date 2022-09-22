@@ -1,11 +1,8 @@
 import { Fragment } from 'react';
 import './App.css';
 import styled from 'styled-components';
-import PageLeft from './components/PageLeft/PageLeft';
-// import Page4 from './components/PagesRight/04_Verification/Page4';
-// import Page3 from './components/PagesRight/03_Validation/Page3';
-// import Page2 from './components/PagesRight/02_Registration/Page2';
-import Page1 from './components/PagesRight/01_SignIn/Page1';
+import PageLeft from './components/LoginSection/PageLeft/PageLeft';
+import Page1 from './components/LoginSection/PagesRight/01_SignIn/Page1'
 
 const SignInContainer = styled.div`
   display: flex;

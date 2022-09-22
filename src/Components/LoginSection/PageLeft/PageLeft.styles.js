@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import backGroundImg from "../../assets/images/background_image.png"
+import backGroundImg from "../../../assets/images/background_image.png"
 
 
 export const LeftContainer = styled.div`
@@ -38,7 +38,7 @@ export const LogoImg = styled.div`
 export const LogoMotion = styled.div`
     margin: 0;
     padding: 1px;
-    justify-contents: center;
+    justify-content: center;
     align-items: center;
     color: white;
 

@@ -19,7 +19,7 @@ function Page1() {
         e.preventDefault()
         console.log("Email: ", email)
         console.log("Password: ", password)
-        navigate('/findFriends')
+        navigate('/posts')
 
 
         const url = "https://motion.propulsion-home.ch/backend/api/auth/token/"
