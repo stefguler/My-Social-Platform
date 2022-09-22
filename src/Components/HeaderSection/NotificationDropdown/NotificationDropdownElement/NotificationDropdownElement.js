@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Notification from '../Notification/Notification';
+import { useEffect, useState } from 'react';
 
 
 
@@ -33,19 +34,58 @@ const SentRequestContainer = styled.div`
 
 export default function NotificationDropdownElement() {
 
+    const [requests, setRequests] = useState([])
+    const [notificationCount, setNotificationCount] = useState(0)
     const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDI2MzEzLCJqdGkiOiI4MWVkMzMxMzc5N2M0MGU4YmU3YzBjYzZiMGU2NWFmOSIsInVzZXJfaWQiOjE3NTZ9.qp2_KS2BIKv-97apVWi58jc1GaqhGDtLXKhXFkwA7D8"
+
+    const url = "https://motion.propulsion-home.ch/backend/api/social/friends/requests/"
+    // const jsObject = {
+    //     // email: email,
+    //     // password: password
+    // }
+
+    useEffect(() => {
+        const config = {
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }),
+            // body: JSON.stringify(jsObject)
+        }
+    
+        fetch(url, config).then(
+            response => response.json())
+            // .then(
+            //     data => setNotificationCount(data.count))
+            .then(
+                data => setRequests(data.results))
+    }, []);
+    
 
     return (
         <>
             <ElementContainer>
                 <ReceivedRequestContainer>
                     <span>Received Request</span>
-                    <Notification/>
+                    {requests.map((request, idx) => {
+                        if (request.requester.id !== 1756 )
+                        {
+                            return <Notification key={idx} item={request} type={1}/>
+                        }
+                    })
+                    }
                 </ReceivedRequestContainer>
 
                 <SentRequestContainer>
                     <span>Sent Request</span>
-                    <Notification/>
+                    {requests.map((request, idx) => {
+                        if (request.requester.id === 1756 )
+                        {
+                            return <Notification key={idx} item={request} type={2}/>
+                        }
+                    })
+                    }
                 </SentRequestContainer>
 
             </ElementContainer>

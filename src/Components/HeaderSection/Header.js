@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation/Navigation'
 import Menudropdown from './MenuDropdown/MenuDropdown'
 import NotificationDropdown from './NotificationDropdown';
+import { useEffect, useState} from 'react';
 
 
 const HeaderContainer = styled.header`
@@ -82,6 +83,33 @@ const ProfileContainer = styled.div`
 `
 export default function Header() {
 
+    const [notificationCount, setNotificationCount] = useState(0)
+    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDI2MzEzLCJqdGkiOiI4MWVkMzMxMzc5N2M0MGU4YmU3YzBjYzZiMGU2NWFmOSIsInVzZXJfaWQiOjE3NTZ9.qp2_KS2BIKv-97apVWi58jc1GaqhGDtLXKhXFkwA7D8"
+
+    const url = "https://motion.propulsion-home.ch/backend/api/social/friends/requests/"
+    // const jsObject = {
+    //     // email: email,
+    //     // password: password
+    // }
+
+    useEffect(() => {
+        const config = {
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }),
+            // body: JSON.stringify(jsObject)
+        }
+    
+        fetch(url, config).then(
+            response => response.json())
+            .then(
+                data => setNotificationCount(data.count))
+            // .then(
+            //     data => setRequests(data.results))
+    }, []);
+
     const navigate = useNavigate();
 
     return (
@@ -98,7 +126,7 @@ export default function Header() {
                 <HeaderRightContainer>
 
                     <NotificationContainer>
-                        <NotificationCircle>2</NotificationCircle>
+                        <NotificationCircle>{notificationCount}</NotificationCircle>
                         <NotificationDropdown/>
                     </NotificationContainer>
 
