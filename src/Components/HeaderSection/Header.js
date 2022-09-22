@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation/Navigation'
-import Dropdown from './Dropdown/Dropdown';
-import Element from './Dropdown/Element/Element';
+import Menudropdown from './MenuDropdown/MenuDropdown'
 
 
 const HeaderContainer = styled.header`
@@ -14,6 +13,7 @@ const HeaderContainer = styled.header`
     font-family: 'Luckiest Guy', cursive;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.15);
 
     span {
         font-size: 22px;
@@ -76,7 +76,7 @@ const ProfileContainer = styled.div`
 
     img {
         border-radius: 50%;
-        margin-right: 2rem;
+        margin-right: 0;
         cursor: pointer;
     }
 
@@ -104,14 +104,12 @@ export default function Header() {
 
                     <NotificationContainer>
                         <NotificationCircle>1</NotificationCircle>
-                        <i class="fa-solid fa-bell"></i>
+                        <i className="fa-solid fa-bell"></i>
                     </NotificationContainer>
 
                     <ProfileContainer>
                         <img src='femaleAvatar.jpg' width="47.5" height='42.5' onClick={() => navigate('/profile')}></img>
-                         <i class="fa-solid fa-ellipsis-vertical"></i>
-                        {/* <Dropdown/>
-                        <Element/> */}
+                        <Menudropdown/>
                     </ProfileContainer>
                 </HeaderRightContainer>
             </HeaderContainer>
