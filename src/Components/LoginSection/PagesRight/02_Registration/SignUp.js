@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
-import './App.css';
+import '../../../../App.css';
 import styled from 'styled-components';
-import PageLeft from './components/LoginSection/PageLeft/PageLeft';
-import Page1 from './components/LoginSection/PagesRight/01_SignIn/Page1'
+import PageLeft from '../../PageLeft/PageLeft';
+import Page2 from './Page2';
 
 const SignInContainer = styled.div`
   display: flex;
@@ -10,16 +10,16 @@ const SignInContainer = styled.div`
   min-width: 100vw;
 `
 
-function App() {
+function SignUp() {
   return (
     <Fragment>
       <SignInContainer>
         <PageLeft />
-        <Page1 />
+        <Page2 />
       </SignInContainer>
     </Fragment>
 
   );
 }
 
-export default App;
+export default SignUp;

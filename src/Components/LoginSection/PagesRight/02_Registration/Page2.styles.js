@@ -50,24 +50,21 @@ export const FormContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
+    padding-top: 150px;
 `
 
 export const FormTitle = styled.div`
     display: flex;
     flex-direction: center;
     justify-content: center;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     font-weight: 500;
     font-size: 40px;
 `
 
-export const FormStyledIcon = styled.div`
-    color: rgb(165, 128, 255);
-`
 
 export const Space = styled.div`
-    width: 30px;
+    width: 20px;
 `
 
 export const StyledInput = styled.input`
@@ -88,7 +85,14 @@ export const FormRegisterEmail = styled.div`
     font-weight: 400;
     font-size: 16px;
     border: none;
-    border-bottom: solid grey 1px;
+`
+
+export const FormStyledIcon = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: rgb(165, 128, 255);
+    height: 40px;
 `
 
 export const Frame4 = styled.div`
@@ -102,7 +106,7 @@ export const FormSubmit = styled.div`
     flex-direction: flex-end;
     justify-content: center;
     align-items: flex-end;
-    padding: 280px 10px 50px 10px;
+    padding: 200px 10px 50px 10px;
     color: white;
 `
 

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation/Navigation'
-import Dropdown from './Dropdown/Dropdown';
-import Element from './Dropdown/Element/Element';
+import Menudropdown from './MenuDropdown/MenuDropdown'
+import NotificationDropdown from './NotificationDropdown';
+import { useEffect, useState} from 'react';
 
 
 const HeaderContainer = styled.header`
@@ -14,6 +15,7 @@ const HeaderContainer = styled.header`
     font-family: 'Luckiest Guy', cursive;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.15);
 
     span {
         font-size: 22px;
@@ -44,12 +46,6 @@ const HeaderRightContainer = styled.div`
 const NotificationContainer = styled.div`
     position: relative;
     margin-right: 3rem;
-
-    i {
-        font-size: 20px;
-        color: lightgray;
-        cursor: pointer;
-    }
 `
 const NotificationCircle = styled.div`
     display: flex;
@@ -63,8 +59,8 @@ const NotificationCircle = styled.div`
     border-radius: 50%;
     position: absolute;
     border: 2.5px white solid;
-    left: 0.9rem;
-    bottom: 0.5rem;
+    left: 1.3rem;
+    bottom: 0.8rem;
 `;
 const ProfileContainer = styled.div`
     display: flex;
@@ -76,7 +72,7 @@ const ProfileContainer = styled.div`
 
     img {
         border-radius: 50%;
-        margin-right: 2rem;
+        margin-right: 0;
         cursor: pointer;
     }
 
@@ -86,6 +82,33 @@ const ProfileContainer = styled.div`
     }
 `
 export default function Header() {
+
+    const [notificationCount, setNotificationCount] = useState(0)
+    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDI2MzEzLCJqdGkiOiI4MWVkMzMxMzc5N2M0MGU4YmU3YzBjYzZiMGU2NWFmOSIsInVzZXJfaWQiOjE3NTZ9.qp2_KS2BIKv-97apVWi58jc1GaqhGDtLXKhXFkwA7D8"
+
+    const url = "https://motion.propulsion-home.ch/backend/api/social/friends/requests/"
+    // const jsObject = {
+    //     // email: email,
+    //     // password: password
+    // }
+
+    useEffect(() => {
+        const config = {
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }),
+            // body: JSON.stringify(jsObject)
+        }
+    
+        fetch(url, config).then(
+            response => response.json())
+            .then(
+                data => setNotificationCount(data.count))
+            // .then(
+            //     data => setRequests(data.results))
+    }, []);
 
     const navigate = useNavigate();
 
@@ -103,15 +126,13 @@ export default function Header() {
                 <HeaderRightContainer>
 
                     <NotificationContainer>
-                        <NotificationCircle>1</NotificationCircle>
-                        <i class="fa-solid fa-bell"></i>
+                        <NotificationCircle>{notificationCount}</NotificationCircle>
+                        <NotificationDropdown/>
                     </NotificationContainer>
 
                     <ProfileContainer>
                         <img src='femaleAvatar.jpg' width="47.5" height='42.5' onClick={() => navigate('/profile')}></img>
-                         <i class="fa-solid fa-ellipsis-vertical"></i>
-                        {/* <Dropdown/>
-                        <Element/> */}
+                        <Menudropdown/>
                     </ProfileContainer>
                 </HeaderRightContainer>
             </HeaderContainer>
