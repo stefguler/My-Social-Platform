@@ -8,6 +8,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {FindFriends}  from './components/FindFriendsSection/FindFriends'
 import ProfileSection from './components/ProfileSection/ProfileSection';
 import PostsSection from './components/PostsSection/PostsSection';
+import SignUp from './components/LoginSection/PagesRight/02_Registration/SignUp';
+import Validation from './components/LoginSection/PagesRight/03_Validation/Validation';
+import Verification from './components/LoginSection/PagesRight/04_Verification/Verification';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +19,9 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/signup" element={<SignUp />}/>
+        <Route path="/validate" element={<Validation />} />
+        <Route path="/verificate" element={<Verification />} />
         <Route path="/findfriends" element={<FindFriends />} />
         <Route path="/profile" element={<ProfileSection />} />
         <Route path="/posts" element={<PostsSection />} />

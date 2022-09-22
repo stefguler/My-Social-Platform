@@ -1,8 +1,11 @@
 import { RightContainer, MessageContainer, MessageTitle, IconContainer, MessageWrapper, Message, Frame4, FormContinue, FormContinueButton, PageDots, UncoloredDot, ColoredDot } from "./Page3.styles"
 import { GoPrimitiveDot } from 'react-icons/go'
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io'
+import { useNavigate } from 'react-router-dom'
+
 
 function Page3() {
+    const navigate = useNavigate();
 
     return (
         <RightContainer>
@@ -28,7 +31,7 @@ function Page3() {
 
                     <Frame4>
                         <FormContinue>
-                            <FormContinueButton type={"submit"}>
+                            <FormContinueButton onClick={() => navigate('/verificate')}>
                                 CONTINUE
                             </FormContinueButton>
                         </FormContinue>
