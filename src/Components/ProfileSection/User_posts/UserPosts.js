@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { User_post } from './User_post';
+import { UserPost } from './UserPost';
 
 
 const User_posts = () => {
@@ -41,7 +41,7 @@ const User_posts = () => {
 
   return (
     <>
-        {posts.length ? <User_post posts={posts}/> : 'Loading post'}                    
+        {posts.length ? <UserPost posts={posts}/> : 'Loading post'}                    
     </>
   )
 }

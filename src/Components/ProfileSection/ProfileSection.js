@@ -1,5 +1,5 @@
 import Header from "../Header";
-import User_posts from "./User_posts/User_posts";
+import User_posts from "./User_posts/UserPosts";
 
 
 export default function ProfileSection() {
