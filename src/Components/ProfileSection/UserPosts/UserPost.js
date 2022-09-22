@@ -1,7 +1,7 @@
 import React from 'react'
 import Post from './Post'
 
-export const User_post = ({posts}) => {
+export const UserPost = ({posts}) => {
   return (
     <>
         {posts.map((post, index) => 
