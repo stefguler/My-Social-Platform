@@ -1,8 +1,12 @@
 import { RightContainer, VerificationContainer, VerificationTitle, FormValidationCode, ValidationInput, EmailUsernameWrapper, FormEmail, EmailInput, FormUserName, UserNameInput, FirstAndLastNameWrapper, FormFirstName, FirstNameInput, FormLastName, LastNameInput, PasswordWrapper, FormPassword, PasswordInput, FormPasswordRepeat, PasswordRepeatInput, Frame4, FormComplete, FormCompleteButton, PageDots, UncoloredDot, ColoredDot } from "./Page4.styles"
 import { GoPrimitiveDot } from "react-icons/go"
 import TextField from '@mui/material/TextField'
+import { useNavigate } from 'react-router-dom'
+
 
 function Page4() {
+    const navigate = useNavigate();
+
 
     return (
         <RightContainer>
@@ -49,7 +53,7 @@ function Page4() {
 
                     <Frame4>
                         <FormComplete>
-                            <FormCompleteButton type={"submit"}>
+                            <FormCompleteButton onClick={() => navigate('/posts')}>
                                 COMPLETE
                             </FormCompleteButton>
                         </FormComplete>

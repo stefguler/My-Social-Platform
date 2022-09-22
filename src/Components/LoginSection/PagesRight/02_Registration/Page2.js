@@ -2,11 +2,13 @@ import { useState } from "react"
 import { ButtonQuestion, ButtonsContainer, ButtonSignUp, FormContainer, FormStyledIcon, FormSubmit, FormTitle, Frame4, PageDots, RightContainer, Space, StyledInput, FormSubmitButton, ButtonSignUpButton, FormRegisterEmail, UncoloredDot, ColoredDot } from "./Page2.styles"
 import { GoPrimitiveDot } from 'react-icons/go'
 import { MdEmail } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 
 
 function Page2() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const navigate = useNavigate();
 
 
     const handleEmailChange = (e) => {
@@ -46,7 +48,7 @@ function Page2() {
                     </p>
                 </ButtonQuestion>
                 <ButtonSignUp>
-                    <ButtonSignUpButton>
+                    <ButtonSignUpButton onClick={() => navigate('/')}>
                         SIGN IN
                     </ButtonSignUpButton>
                 </ButtonSignUp>
@@ -54,7 +56,7 @@ function Page2() {
 
             <FormContainer>
                 <FormTitle>
-                    <p>Sign In</p>
+                    <p>Sign Up</p>
                 </FormTitle>
 
 
@@ -69,8 +71,8 @@ function Page2() {
                     </FormRegisterEmail>
                     <Frame4>
                         <FormSubmit>
-                            <FormSubmitButton type={"submit"}>
-                                SIGN IN
+                            <FormSubmitButton onClick={() => navigate('/validate')}>
+                                CONTINUE
                             </FormSubmitButton>
                         </FormSubmit>
                         <PageDots>
