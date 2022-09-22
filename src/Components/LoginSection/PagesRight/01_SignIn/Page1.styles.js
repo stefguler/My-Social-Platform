@@ -133,3 +133,5 @@ export const FormSubmitButton = styled.button`
 `
 
 export const PageDots = styled.div``
+
+export const ErrorContainer = styled.div``
