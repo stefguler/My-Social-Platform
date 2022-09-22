@@ -11,6 +11,7 @@ import PostsSection from './components/PostsSection/PostsSection';
 import SignUp from './components/LoginSection/PagesRight/02_Registration/SignUp';
 import Validation from './components/LoginSection/PagesRight/03_Validation/Validation';
 import Verification from './components/LoginSection/PagesRight/04_Verification/Verification';
+import EditProfile from './components/EditProfile/EditProfile';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,7 +26,7 @@ root.render(
         <Route path="/findfriends" element={<FindFriends />} />
         <Route path="/profile" element={<ProfileSection />} />
         <Route path="/posts" element={<PostsSection />} />
-
+        <Route path="/edit-profile" element={<EditProfile />} />
 
       </Routes>
     </BrowserRouter>
