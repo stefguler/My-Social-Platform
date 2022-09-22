@@ -4,18 +4,28 @@ export const authSlice = createSlice({
   name: "auth",
   initialState: {
     currentUser: undefined,
-    authorizedUsers: []
+    accessToken: null,
+    refreshToken: null,
+    isInputValid: true
   },
   reducers: {
     setCurrentUser: (state, action) => {
-        state.currentUser = action.payload
-  },
-    addAuthorizedUsers: (state, action) => {
-        state.currentUser.push(action.payload)
+      state.currentUser = action.payload
+    },
+    setAccessToken: (state, action) => {
+      state.accessToken = action.payload
+    },
+    setRefreshToken: (state, action) => {
+      state.refreshToken = action.payload
+    },
+    setIsInputValid: (state, action) => {
+      state.isInputValid = action.payload
     }
- 
-}})
 
+  }
+})
 
-export const { setCurrentUser, addAuthorizedUsers } = authSlice.actions;
+export const selectIsInputValid = state => state.auth.isInputValid
+
+export const { setCurrentUser, setAccessToken, setRefreshToken, setIsInputValid } = authSlice.actions;
 export default authSlice.reducer;
