@@ -6,7 +6,7 @@ const Post = ({ avatar, name, surname, description, postImages, likeIcon, shareI
   const Page = styled.div`
     width: 560px;
     height: 750px;
-    background-color: #f2f2f2;
+    background-color: #fff;
     border-radius: 4px;
   `
   const Container = styled.div`

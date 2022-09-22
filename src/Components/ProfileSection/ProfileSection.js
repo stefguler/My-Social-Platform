@@ -6,8 +6,8 @@ export default function ProfileSection() {
 
   return(
     <>
-    <Header/>
-    <User_posts/>
+        <ProfileInfo />
+        <User_posts />
     </>
   )
 
