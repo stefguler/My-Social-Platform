@@ -18,6 +18,9 @@ root.render(
         <Route path="/findfriends" element={<FindFriends />} />
         <Route path="/posts" element={<PostsSection />} />
         <Route path="/profile" element={<ProfileSection />} />
+        <Route path="/posts" element={<PostsSection />} />
+
+
       </Routes>
     </BrowserRouter>
   </Provider>
