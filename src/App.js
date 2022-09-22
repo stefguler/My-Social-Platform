@@ -2,9 +2,10 @@ import { Fragment } from 'react';
 import './App.css';
 import styled from 'styled-components';
 import PageLeft from './components/PageLeft/PageLeft';
-import Page3 from './components/PagesRight/03_Validation/Page3';
+// import Page4 from './components/PagesRight/04_Verification/Page4';
+// import Page3 from './components/PagesRight/03_Validation/Page3';
 // import Page2 from './components/PagesRight/02_Registration/Page2';
-// import Page1 from './components/PagesRight/Page1/Page1';
+import Page1 from './components/PagesRight/01_SignIn/Page1';
 
 const SignInContainer = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ function App() {
         <Page1/>
         </SignInContainer>
     </Fragment>
+
   );
 }
 
