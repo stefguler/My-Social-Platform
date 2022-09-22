@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation/Navigation'
 import Menudropdown from './MenuDropdown/MenuDropdown'
+import NotificationDropdown from './NotificationDropdown';
 
 
 const HeaderContainer = styled.header`
@@ -44,12 +45,6 @@ const HeaderRightContainer = styled.div`
 const NotificationContainer = styled.div`
     position: relative;
     margin-right: 3rem;
-
-    i {
-        font-size: 20px;
-        color: lightgray;
-        cursor: pointer;
-    }
 `
 const NotificationCircle = styled.div`
     display: flex;
@@ -63,8 +58,8 @@ const NotificationCircle = styled.div`
     border-radius: 50%;
     position: absolute;
     border: 2.5px white solid;
-    left: 0.9rem;
-    bottom: 0.5rem;
+    left: 1.3rem;
+    bottom: 0.8rem;
 `;
 const ProfileContainer = styled.div`
     display: flex;
@@ -103,8 +98,8 @@ export default function Header() {
                 <HeaderRightContainer>
 
                     <NotificationContainer>
-                        <NotificationCircle>1</NotificationCircle>
-                        <i className="fa-solid fa-bell"></i>
+                        <NotificationCircle>2</NotificationCircle>
+                        <NotificationDropdown/>
                     </NotificationContainer>
 
                     <ProfileContainer>
