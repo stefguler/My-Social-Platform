@@ -14,9 +14,9 @@ function App() {
   return (
     <Fragment>
       <SignInContainer>
-        <PageLeft/>
-        <Page1/>
-        </SignInContainer>
+        <PageLeft />
+        <Page1 />
+      </SignInContainer>
     </Fragment>
 
   );
