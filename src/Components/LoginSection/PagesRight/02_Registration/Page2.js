@@ -4,13 +4,15 @@ import { GoPrimitiveDot } from 'react-icons/go'
 import { MdEmail } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import TextField from '@mui/material/TextField'
+import {useDispatch} from 'react-redux'
+import {setRegisterEmail} from '../../../../redux/slices/Auth'
 
 
 
 function Page2() {
     const [email, setEmail] = useState("")
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
@@ -19,6 +21,7 @@ function Page2() {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log("Email: ", email)
+        dispatch(setRegisterEmail(email))
         navigate('/validate')
 
         const url = "https://motion.propulsion-home.ch/backend/api/auth/registration/"

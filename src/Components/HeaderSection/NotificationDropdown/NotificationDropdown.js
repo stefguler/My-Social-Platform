@@ -20,8 +20,9 @@ const DropdownButton = styled.div`
 `
 
 
-export default function Dropdown() {
+export default function Dropdown(props) {
 
+    const apidata = props.apidata
     const [display, setDisplay] = useState(false);
 
     const handleClick = () => {
@@ -36,7 +37,7 @@ export default function Dropdown() {
                     <i className="fa-solid fa-bell"></i>
                 </div>
                 {
-                    (display) ? <NotificationDropdownElement /> : null
+                    (display && apidata.length !== 0) ? <NotificationDropdownElement apidata={apidata}/> : null
                 }
             </DropdownButton>
         </>
