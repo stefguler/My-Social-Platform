@@ -3,6 +3,7 @@ import MenuDropdownElement  from './MenuDropdownElement/MenuDropdownElement'
 import styled from 'styled-components'
 
 //https://upmostly.com/tutorials/how-to-react-dropdown-menu
+//xevibaj171@dnitem.com
 
 const DropdownButton = styled.div`
     cursor: pointer;
@@ -27,7 +28,7 @@ export default function Dropdown() {
         <>
             <DropdownButton onClick={() => handleClick()}>
                 <div >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <i className="fa-solid fa-ellipsis-vertical"></i>
                 </div>
                 {
                     (display) ? <MenuDropdownElement/> : null

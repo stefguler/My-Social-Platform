@@ -4,6 +4,7 @@ import Navigation from './Navigation/Navigation'
 import Menudropdown from './MenuDropdown/MenuDropdown'
 import NotificationDropdown from './NotificationDropdown';
 import { useEffect, useState} from 'react';
+import {useSelector} from 'react-redux'
 
 
 const HeaderContainer = styled.header`
@@ -83,16 +84,23 @@ const ProfileContainer = styled.div`
 `
 export default function Header() {
 
-    const [notificationCount, setNotificationCount] = useState(0)
-    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDI2MzEzLCJqdGkiOiI4MWVkMzMxMzc5N2M0MGU4YmU3YzBjYzZiMGU2NWFmOSIsInVzZXJfaWQiOjE3NTZ9.qp2_KS2BIKv-97apVWi58jc1GaqhGDtLXKhXFkwA7D8"
+    const [request, setRequests] = useState(0)
+    // const [notificationCount, setNotificationCount] = useState(0)
+    const token = useSelector(state => state.auth.accessToken)
 
-    const url = "https://motion.propulsion-home.ch/backend/api/social/friends/requests/"
+    // const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDI2MzEzLCJqdGkiOiI4MWVkMzMxMzc5N2M0MGU4YmU3YzBjYzZiMGU2NWFmOSIsInVzZXJfaWQiOjE3NTZ9.qp2_KS2BIKv-97apVWi58jc1GaqhGDtLXKhXFkwA7D8"
+
+   
     // const jsObject = {
     //     // email: email,
     //     // password: password
     // }
 
     useEffect(() => {
+
+        if (token === undefined) navigate('/')
+
+        const url = "https://motion.propulsion-home.ch/backend/api/social/friends/requests/"
         const config = {
             method: "GET",
             headers: new Headers({
@@ -104,11 +112,12 @@ export default function Header() {
     
         fetch(url, config).then(
             response => response.json())
-            .then(
-                data => setNotificationCount(data.count))
             // .then(
-            //     data => setRequests(data.results))
-    }, []);
+            //     data => setNotificationCount(data.count))
+            .then(
+                data => setRequests(data.results))
+
+    }, [token]);
 
     const navigate = useNavigate();
 
@@ -126,8 +135,8 @@ export default function Header() {
                 <HeaderRightContainer>
 
                     <NotificationContainer>
-                        <NotificationCircle>{notificationCount}</NotificationCircle>
-                        <NotificationDropdown/>
+                        <NotificationCircle>{request.length}</NotificationCircle>
+                        <NotificationDropdown apidata={request}/>
                     </NotificationContainer>
 
                     <ProfileContainer>
