@@ -22,7 +22,6 @@ function Page1() {
         console.log("Password: ", password)
         navigate('/posts')
 
-
         const url = "https://motion.propulsion-home.ch/backend/api/auth/token/"
         const jsObject = {
             email: email,

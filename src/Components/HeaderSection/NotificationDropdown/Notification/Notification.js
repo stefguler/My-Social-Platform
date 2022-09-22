@@ -46,14 +46,20 @@ const AcceptButtonContainer = styled.div`
     }
 `
 
-export default function Notification() {
+export default function Notification(props) {
+
+    const item = props.item;
+    const itemType = props.type;
+
+    console.log(item)
 
     return (
         <RequestContainer>
         <img width='30' border-radius='50%' src="femaleAvatar.jpg"></img>
         <RequestNameContainer>
-            <RequestName>Leticia Suárez</RequestName>
-            <RequestLocation>Rome, Italy</RequestLocation>
+            <RequestName>{(itemType === 1) ? item.requester.first_name : item.receiver.first_name} { }
+             {(itemType === 1) ? item.requester.last_name : item.receiver.last_name }</RequestName>
+            <RequestLocation>{(itemType === 1) ? item.requester.location : item.receiver.location}</RequestLocation>
         </RequestNameContainer>
         <ActionsContainer>
             <AcceptButtonContainer>
