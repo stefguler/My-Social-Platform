@@ -178,8 +178,8 @@ const ProfileInfo = () => {
                         <MyHobbiesContainer>
                             <MyHobbies>Horse Riding</MyHobbies>
                             <MyHobbies>Travel</MyHobbies>
-                            <MyHobbies>Spend Money</MyHobbies>
-                            <MyHobbies>Get Paid</MyHobbies>
+                            <MyHobbies>Tech</MyHobbies>
+                            <MyHobbies>Art</MyHobbies>
                             <MyHobbies>Parties</MyHobbies>
                         </MyHobbiesContainer>
                     </Hobbies>
