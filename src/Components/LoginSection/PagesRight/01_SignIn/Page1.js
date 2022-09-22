@@ -2,6 +2,7 @@ import { useState } from "react"
 import { ButtonQuestion, ButtonsContainer, ButtonSignUp, FormContainer, FormEmail, FormPassword, FormStyledIcon, FormSubmit, FormTitle, FormUserName, Frame4, PageDots, RightContainer, Space, StyledInput, FormSubmitButton, ButtonSignUpButton } from "./Page1.styles"
 import { FaUserCircle, FaLock } from "react-icons/fa"
 import { useNavigate } from 'react-router-dom'
+import TextField from '@mui/material/TextField'
 
 function Page1() {
     const [email, setEmail] = useState("")
@@ -62,18 +63,18 @@ function Page1() {
                 <form onSubmit={handleSubmit}>
                     <FormUserName>
                         <FormStyledIcon>
-                            <FaUserCircle />
+                            <FaUserCircle size={20} />
                         </FormStyledIcon>
                         <Space />
-                        <StyledInput type="text" onChange={handleEmailChange} name={"email"} />
+                        <TextField type="text" onChange={handleEmailChange} name={"username"} id="8" label="Username" variant="standard" fullWidth/>
                     </FormUserName>
 
                     <FormPassword>
                         <FormStyledIcon>
-                            <FaLock />
+                            <FaLock size={20} />
                         </FormStyledIcon>
                         <Space />
-                        <StyledInput type="password" onChange={handlePasswordChange} name={"password"} />
+                        <TextField type="password" onChange={handlePasswordChange} name={"password"} id="9" label="Password" variant="standard" fullWidth/>
                     </FormPassword>
 
                     <FormEmail />

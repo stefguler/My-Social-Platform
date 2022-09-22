@@ -3,31 +3,29 @@ import { ButtonQuestion, ButtonsContainer, ButtonSignUp, FormContainer, FormStyl
 import { GoPrimitiveDot } from 'react-icons/go'
 import { MdEmail } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
+import TextField from '@mui/material/TextField'
+
 
 
 function Page2() {
     const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
     const navigate = useNavigate();
 
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
     }
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log("Email: ", email)
-        console.log("Password: ", password)
+        navigate('/validate')
 
-
-        const url = "https://motion.propulsion-home.ch/backend/api/auth/token/"
+        const url = "https://motion.propulsion-home.ch/backend/api/auth/registration/"
         const jsObject = {
             email: email,
-            password: password
         }
+
         const config = {
             method: "POST",
             headers: new Headers({
@@ -67,11 +65,11 @@ function Page2() {
                         </FormStyledIcon>
                         <Space />
 
-                        <StyledInput type="text" onChange={handleEmailChange} name={"email"} />
+                        <TextField value={email} type="text" onChange={handleEmailChange} name={"email"} id="10" label="Email" variant="standard" fullWidth/>
                     </FormRegisterEmail>
                     <Frame4>
                         <FormSubmit>
-                            <FormSubmitButton onClick={() => navigate('/validate')}>
+                            <FormSubmitButton type={"submit"} >
                                 CONTINUE
                             </FormSubmitButton>
                         </FormSubmit>

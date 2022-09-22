@@ -66,19 +66,22 @@ export const FormUserName = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     font-weight: 400;
     font-size: 16px;
     border: none;
-    border-bottom: solid grey 1px;
 `
 
 export const FormStyledIcon = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     color: rgb(165, 128, 255);
+    height: 40px;
 `
 
 export const Space = styled.div`
-    width: 30px;
+    width: 15px;
 `
 
 export const StyledInput = styled.input`
@@ -95,12 +98,11 @@ export const FormPassword = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 20px;
     font-weight: 400;
     font-size: 16px;
     border: none;
-    border-bottom: solid grey 1px;
 `
 
 

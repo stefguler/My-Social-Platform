@@ -2,10 +2,78 @@ import { RightContainer, VerificationContainer, VerificationTitle, FormValidatio
 import { GoPrimitiveDot } from "react-icons/go"
 import TextField from '@mui/material/TextField'
 import { useNavigate } from 'react-router-dom'
+import { useState } from "react"
 
 
 function Page4() {
+    const [code, setCode] = useState("") 
+    const [email, setEmail] = useState("")
+    const [username, setUsername] = useState("")
+    const [firstname, setFirstname] = useState("")
+    const [lastname, setLastname] = useState("")
+    const [password, setPassword] = useState("")
+    const [passwordRepeat, setPasswordRepeat] = useState("")
     const navigate = useNavigate();
+
+    const handleCode = (e) => {
+        setCode(e.target.value)
+    }
+
+    const handleEmail = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const handleUsername = (e) => {
+        setUsername(e.target.value)
+    }
+
+    const handleFirstname = (e) => {
+        setFirstname(e.target.value)
+    }
+
+    const handleLastname = (e) => {
+        setLastname(e.target.value)
+    }
+
+    const handlePassword = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const handlePasswordRepeat = (e) => {
+        setPasswordRepeat(e.target.value)
+    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log("Email: ", email)
+        console.log("Password: ", password)
+        console.log("Username :", username)
+        console.log("Code: ", code)
+        console.log("Firstname: ", firstname)
+        console.log("Lastname: ", lastname)
+        navigate('/')
+
+        const url = "https://motion.propulsion-home.ch/backend/api/auth/registration/validation/"
+        const jsObject = {
+            email: email,
+            username: username,
+            code: code,
+            password: password,
+            password_repeat: passwordRepeat,
+            first_name: firstname,
+            last_name: lastname
+        }
+        const config = {
+            method: "PATCH",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
+            body: JSON.stringify(jsObject)
+        }
+        fetch(url, config)
+
+    }
+
 
 
     return (
@@ -17,43 +85,43 @@ function Page4() {
                     <p>Verification</p>
                 </VerificationTitle>
 
-                <form>
+                <form onSubmit={handleSubmit}>
 
                     <FormValidationCode>
-                        <TextField id="standard-basic" label="Verification Code" variant="standard" fullWidth />
+                        <TextField onChange={handleCode} id="1" label="code" variant="standard" fullWidth />
                     </FormValidationCode>
 
                     <EmailUsernameWrapper>
                         <FormEmail>
-                            <TextField id="standard-basic" label="Email" variant="standard" fullWidth />
+                            <TextField onChange={handleEmail} id="2" label="email" variant="standard" fullWidth />
                         </FormEmail>
                         <FormUserName>
-                            <TextField id="standard-basic" label="Username" variant="standard" fullWidth />
+                            <TextField onChange={handleUsername} id="3" label="username" variant="standard" fullWidth />
                         </FormUserName>
                     </EmailUsernameWrapper>
 
                     <FirstAndLastNameWrapper>
                         <FormFirstName>
-                        <TextField id="standard-basic" label="First Name" variant="standard" fullWidth />
+                        <TextField onChange={handleFirstname} id="4" label="first_name" variant="standard" fullWidth />
                         </FormFirstName>
                         <FormLastName>
-                        <TextField id="standard-basic" label="Last Name" variant="standard" fullWidth />
+                        <TextField onChange={handleLastname} id="5" label="last_name" variant="standard" fullWidth />
                         </FormLastName>
                     </FirstAndLastNameWrapper>
 
                     <PasswordWrapper>
                         <FormPassword>
-                        <TextField id="standard-basic" label="Password" type="password" variant="standard" fullWidth />
+                        <TextField onChange={handlePassword} id="6" label="password" type="password" variant="standard" fullWidth />
                         </FormPassword>
                         <FormPasswordRepeat>
-                        <TextField id="standard-basic" label="Repeat Password" type="password" variant="standard" fullWidth />
+                        <TextField onChange={handlePasswordRepeat} id="7" label="password_repeat" type="password" variant="standard" fullWidth />
                         </FormPasswordRepeat>
                     </PasswordWrapper>
 
 
                     <Frame4>
                         <FormComplete>
-                            <FormCompleteButton onClick={() => navigate('/posts')}>
+                            <FormCompleteButton type={"submit"}>
                                 COMPLETE
                             </FormCompleteButton>
                         </FormComplete>
