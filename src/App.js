@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import './App.css';
 import styled from 'styled-components';
 import PageLeft from './components/PageLeft/PageLeft';
-import Page1 from './components/PagesRight/Page1/Page1';
+import Page1 from './components/PagesRight/Page1/Page1'
 
 const SignInContainer = styled.div`
   display: flex;

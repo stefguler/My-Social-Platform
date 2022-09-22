@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation/Navigation'
 import Dropdown from './Dropdown/Dropdown';
+import Element from './Dropdown/Element/Element';
+
 
 const HeaderContainer = styled.header`
     background: white;
@@ -107,8 +109,8 @@ export default function Header() {
 
                     <ProfileContainer>
                         <img src='femaleAvatar.jpg' width="47.5" height='42.5' onClick={() => navigate('/profile')}></img>
-                        {/* <i class="fa-solid fa-ellipsis-vertical"></i> */}
                         <Dropdown/>
+                        <Element/>
                     </ProfileContainer>
                 </HeaderRightContainer>
             </HeaderContainer>

@@ -1,32 +1,40 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Elememt } from './Element/Element'
 
 //https://upmostly.com/tutorials/how-to-react-dropdown-menu
 
 
-export default function Dropdown() {
+export default function Dropdown(props) {
 
-    const navigate = useNavigate();
-    const handleLogout = () => {
-    console.log('trying to log out')
-
+    const [display, setDisplay] = useState('none');
+    const handleClick = () => {
+        console.log('i was clicked')
+        console.log(display)
+        if (display == 'none') {
+            setDisplay('block')
+        } else {
+            setDisplay('none')
+        }
     }
+
+    // const handleLogout = () => {
+    // console.log('trying to log out')
+    // }
 
     return (
         <>
             <div>
-                <label>
-                    <select> 
-                        <option value=""><i class="fa-solid fa-ellipsis-vertical"></i></option>
-                        <option value="profile" onSelect={() => navigate('/profile')}>
-                            <i class="fa-solid fa-bell"></i>
-                            <i class="fa-solid fa-ellipsis-vertical">
-                                </i>Profile</option>
-                        <option value="logout" onClick={() => handleLogout()}>
-                            <i class="fa-solid fa-bell"></i>
-                            Logout</option>
-                    </select>
-                </label>
+                <div onClick={() => handleClick()}>
+                    Hello World
+                    {/* <i class="fa-solid fa-ellipsis-vertical"></i> */}
+                </div>
+
+
+                <div style={{ display: display }}>
+                    { props.children }
+                </div>
+
             </div>
         </>
     )
