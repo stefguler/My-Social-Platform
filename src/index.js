@@ -5,7 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import  store from './redux/Store'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { FindFriends } from './components/FindFriendsSection/FindFriends'
+import {FindFriends}  from './components/FindFriendsSection/FindFriends'
 import ProfileSection from './components/ProfileSection/ProfileSection';
 import PostsSection from './components/PostsSection/PostsSection';
 
