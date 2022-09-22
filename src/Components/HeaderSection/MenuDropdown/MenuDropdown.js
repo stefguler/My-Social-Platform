@@ -19,7 +19,6 @@ export default function Dropdown() {
     const [display, setDisplay] = useState(false);
     
     const handleClick = () => {
-        console.log('i was clicked');
         (display) ? setDisplay(!display) : setDisplay(true) 
 
     }

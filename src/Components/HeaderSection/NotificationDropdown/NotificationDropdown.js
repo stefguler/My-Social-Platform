@@ -1,5 +1,5 @@
 import { useState } from "react";
-import NotificationDropdownElement  from './NotificationDropdownElement/NotificationDropdownElement'
+import NotificationDropdownElement from './NotificationDropdownElement/NotificationDropdownElement'
 import styled from 'styled-components'
 
 //https://upmostly.com/tutorials/how-to-react-dropdown-menu
@@ -11,16 +11,21 @@ const DropdownButton = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    i {
+        font-size: 20px;
+        color: lightgray;
+        cursor: pointer;
+    }
 `
 
 
 export default function Dropdown() {
 
     const [display, setDisplay] = useState(false);
-    
+
     const handleClick = () => {
-        console.log('i was clicked');
-        (display) ? setDisplay(!display) : setDisplay(true) 
+        (display) ? setDisplay(!display) : setDisplay(true)
 
     }
 
@@ -28,10 +33,10 @@ export default function Dropdown() {
         <>
             <DropdownButton onClick={() => handleClick()}>
                 <div >
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                    <i className="fa-solid fa-bell"></i>
                 </div>
                 {
-                    (display) ? <NotificationDropdownElement/> : null
+                    (display) ? <NotificationDropdownElement /> : null
                 }
             </DropdownButton>
         </>
