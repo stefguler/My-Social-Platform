@@ -38,7 +38,7 @@ export const LogoImg = styled.div`
 export const LogoMotion = styled.div`
     margin: 0;
     padding: 1px;
-    justify-contents: center;
+    justify-content: center;
     align-items: center;
     color: white;
 
