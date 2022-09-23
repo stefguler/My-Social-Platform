@@ -1,28 +1,71 @@
-import React, { Component } from 'react'
-// import { State, useState } from 'react'
+
+import { useState, useEffect } from 'react'
 import './create-post-style.css'
-import { WhosePostFooter, WhosePostPicture, WhosePostText, WhosePostHeader, PostRightSecondText, PostRightFooter, PostRightFirstText, PostRightFirstHeader, PostFirstHeaderText, PostContainer, CreateP, PostInput, PostFirst, CreatePostPhoto, PostFirstHeader, PostFirstText, PostFirstPictures, PostFooter, PostRightFirst, PostRightSecond, PostRightSecondHeader, WhosePost } from './Style'
+import { PostButton, PostDots, PostList, WhosePostFooter, WhosePostPicture, WhosePostText, WhosePostHeader, PostRightSecondText, PostRightFooter, PostRightFirstText, PostRightFirstHeader, PostFirstHeaderText, PostContainer, CreateP, PostInput, PostFirst, CreatePostPhoto, PostFirstHeader, PostFirstText, PostFirstPictures, PostFooter, PostRightFirst, PostRightSecond, PostRightSecondHeader, WhosePost } from './Style'
+
+ 
+
+export const CreatePost = () => {
+const [ createpost, setCreatePost ] = useState("")
+const [ post, setPost ] = useState([])
 
 
 
 
+    useEffect (() => {
+        const url = 'https://motion.propulsion-home.ch/backend/api/social/posts/'
 
-export class CreatePost extends Component {
-
-
-   state = { 
-    likeCount: 0
-   } 
-   likePost = () => {
-    this.setState(({ likeCount }) => {
-        return {
-            likeCount: likeCount+1
+        const config = {
+            method: "GET",
+            headers: new Headers ({
+                "Authorization": `Bearer ${"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDE3NDc5LCJqdGkiOiI4MGNiNDY2Y2JjZjE0ZDRlOTM2ZDNiMTM2ZmExMGYwZCIsInVzZXJfaWQiOjE3NTZ9.GqkfxTYYzjTFYzshjuH-KBXSUGb6IOjdb5-RW5_WiUU"}`
+            })
         }
-    })
-   }
+            fetch(url, config)
+            .then((response) => response.json())
+            .then((data) => setPost(data.results))
+    }, []);
+
+    
+    
+    
+   
+    console.log(createpost)
+
+   
+
+    function handleClick(event) {
+        event.preventDefault();
+        fetch('https://motion.propulsion-home.ch/backend/api/social/posts/',{
+            method: 'POST',
+            mode:  'cors',
+            headers: new Headers ({
+                "Content-Type": 'application/json',
+                "Authorization": `Bearer ${"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDE3NDc5LCJqdGkiOiI4MGNiNDY2Y2JjZjE0ZDRlOTM2ZDNiMTM2ZmExMGYwZCIsInVzZXJfaWQiOjE3NTZ9.GqkfxTYYzjTFYzshjuH-KBXSUGb6IOjdb5-RW5_WiUU"}`
+            }),
+            body: JSON.stringify({
+                content: `${createpost}`,
+                 
+            })
+            })
+            .then(response => console.log(response.json()))
+        }
+    
+//             state = {  
+//      likeCount: 0,
+   
+//     } 
+//     likePost = () => {
+//      this.setState(({ likeCount }) => {
+//          return {
+//              likeCount: ++likeCount,
+             
+//          }
+//      })
+//    }
 
 
-   render(){
+  
     return (
 
         <>
@@ -35,53 +78,67 @@ export class CreatePost extends Component {
             
                 <CreatePostPhoto>
                 <img src='Image (5).png' alt='ph'></img>
+                {/* <p> {post.user.first_name} {post.user.last_name} </p> */}
                 </CreatePostPhoto>
             <PostInput>
-                <input type='text'></input>
+                <input type='text' placeholder='Add a post' value={createpost} onChange={(event) => setCreatePost(event.target.value)} />
+
             </PostInput>
-            <img src='Button.png' alt='bt'></img>
+            <PostButton>
+            <button onClick={(event) => handleClick(event) }>
+                <img src='Button.png' alt='bt' />
+            </button>
+            </PostButton>
             </CreateP>
-        
-        <PostFirst>
-            <PostFirstHeader>
-                    
-                    <div>
-                        <img src='Image (5).png' alt='ph'></img>
-                        <PostFirstHeaderText>
-                            <p>Jeniffer Smith</p>
-                            <p>Just now</p>
-                        </PostFirstHeaderText>
-                    </div>
-                    <p>...</p>
-            </PostFirstHeader>
-            <PostFirstText>
-                <p>
-                Lorem 
-                </p>
-            </PostFirstText>
-            <PostFirstPictures>
-                <img src ='Image1.png' alt='ph'></img>
-                <img src='Image (2).png' alt='ph'></img>
-                <img src='Image (3).png' alt='ph'></img>
-                <img src='Image.png' alt='ph'></img>
-            </PostFirstPictures>
-            <PostFooter>
-                    <div>
-                       <div>
-                            <img onClick={this.likePost} src='Shape (1).svg' alt='heart'></img>
-                            <p>Like</p>
-                        </div> 
-                        <div>
-                            <img src='Shape (2).svg' alt='share'></img>
-                            <p>Share</p>
-                        </div>
-                    </div>    
-                    <div>
-                        <p>{this.state.likeCount} likes</p>
-                    </div>   
-            </PostFooter>
-        </PostFirst>
-            <PostRightFirst>
+     
+            <PostList>
+
+                {post.map((post, idx) => ( 
+                      <PostFirst key={idx}>
+                      <PostFirstHeader>
+                              
+                              <div>
+                                  <img src='Image (5).png' alt='ph'></img>
+                                  <PostFirstHeaderText>
+                                      <p>{post.user.first_name} {post.user.last_name}</p>
+                                      {/* <p>new Date({post.created}).toLocaleTimeString()</p> */}
+                                  </PostFirstHeaderText>
+                              </div>
+                              <PostDots>
+                              <p>...</p>
+                              </PostDots>
+                      </PostFirstHeader>
+                      <PostFirstText>
+                          <p>
+                          {post.content} 
+                          </p>
+                      </PostFirstText>
+                      <PostFirstPictures>
+                          <img src ='Image (1).png' alt='ph'></img>
+                          <img src='Image (2).png' alt='ph'></img>
+                          <img src='Image (3).png' alt='ph'></img>
+                          <img src='Image.png' alt='ph'></img>
+                      </PostFirstPictures>
+                      <PostFooter>
+                              <div>
+                                 <div>
+                                      <img src='Shape (1).svg' alt='heart'></img>
+                                      <p>Like</p>
+                                  </div> 
+                                  <div>
+                                      <img src='Shape (2).svg' alt='share'></img>
+                                      <p>Share</p>
+                                  </div>
+                              </div>    
+                              <div>
+                                  <p>likes</p>
+                              </div>   
+                      </PostFooter>
+                  </PostFirst>
+                ))}
+      
+            </PostList>
+            {/* <PostRightFirst>
                 <PostRightFirstHeader>
                         
                             <div>
@@ -110,7 +167,7 @@ export class CreatePost extends Component {
                                 </div>
                             </div>
                             
-                                <div><p>{this.state.likeCount} likes</p></div>
+                                <div><p>likes</p></div>
                         </PostRightFooter>    
                    
                 
@@ -168,19 +225,19 @@ export class CreatePost extends Component {
                             </div>
                             <div>
                                 <div>
-                                    <p>{this.state.likeCount} likes</p>
+                                    <p>likes</p>
                                 </div>
                             </div>
                      
                     </WhosePostFooter>
                 
-                </PostRightSecond>
-            </div>
+                </PostRightSecond> */}
+    </div>
    
 }
     </PostContainer>
     </>
     )
 }
-}
+
 
