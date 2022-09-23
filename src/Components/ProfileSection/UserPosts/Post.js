@@ -8,11 +8,12 @@ const Post = ({ avatar, name, surname, description, postImages, likeIcon, shareI
     height: 750px;
     background-color: #fff;
     border-radius: 4px;
-  `
+      `
   const Container = styled.div`
     background-color: '#fffff';
     width: 100%;
     height: 100%;
+    margin-top: 13rem;
   `
 
   const PostHead = styled.div`
