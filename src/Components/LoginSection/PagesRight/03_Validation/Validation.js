@@ -11,12 +11,12 @@ const SignInContainer = styled.div`
   min-width: 100vw;
 `
 
-function Validation() {
+function Validation(props) {
   return (
     <Fragment>
       <SignInContainer>
         <PageLeft />
-        <Page3 />
+        <Page3 email={props.email} />
       </SignInContainer>
     </Fragment>
 

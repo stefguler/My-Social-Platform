@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import  store from './redux/Store'
+import store from './redux/Store'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import {FindFriends}  from './components/FindFriendsSection/FindFriends'
-import ProfileSection from './components/ProfileSection/ProfileSection';
-import PostsSection from './components/PostsSection/PostsSection';
-import SignUp from './components/LoginSection/PagesRight/02_Registration/SignUp';
-import Validation from './components/LoginSection/PagesRight/03_Validation/Validation';
-import Verification from './components/LoginSection/PagesRight/04_Verification/Verification';
-import EditProfile from './components/ProfileSection/EditProfile/EditProfile';
+import {FindFriends}  from './Components/FindFriendsSection/FindFriends'
+import ProfileSection from './Components/ProfileSection/ProfileSection';
+import PostsSection from './Components/PostsSection/PostsSection';
+import SignUp from './Components/LoginSection/PagesRight/02_Registration/SignUp';
+import Validation from './Components/LoginSection/PagesRight/03_Validation/Validation';
+import Verification from './Components/LoginSection/PagesRight/04_Verification/Verification';
+import EditProfile from './Components/ProfileSection/EditProfile/EditProfile';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,7 +20,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/signup" element={<SignUp />}/>
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/validate" element={<Validation />} />
         <Route path="/verificate" element={<Verification />} />
         <Route path="/findfriends" element={<FindFriends />} />

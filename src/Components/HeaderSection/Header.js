@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation/Navigation'
 import Menudropdown from './MenuDropdown/MenuDropdown'
 import NotificationDropdown from './NotificationDropdown';
-import { useEffect, useState} from 'react';
-import {useSelector} from 'react-redux'
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux'
 
 
 const HeaderContainer = styled.header`
@@ -90,7 +90,7 @@ export default function Header() {
 
     // const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDI2MzEzLCJqdGkiOiI4MWVkMzMxMzc5N2M0MGU4YmU3YzBjYzZiMGU2NWFmOSIsInVzZXJfaWQiOjE3NTZ9.qp2_KS2BIKv-97apVWi58jc1GaqhGDtLXKhXFkwA7D8"
 
-   
+
     // const jsObject = {
     //     // email: email,
     //     // password: password
@@ -109,7 +109,7 @@ export default function Header() {
             }),
             // body: JSON.stringify(jsObject)
         }
-    
+
         fetch(url, config).then(
             response => response.json())
             // .then(
@@ -118,6 +118,8 @@ export default function Header() {
                 data => setRequests(data.results))
 
     }, [token]);
+
+    console.log(request)
 
     const navigate = useNavigate();
 
@@ -136,12 +138,12 @@ export default function Header() {
 
                     <NotificationContainer>
                         <NotificationCircle>{request.length}</NotificationCircle>
-                        <NotificationDropdown apidata={request}/>
+                        <NotificationDropdown apidata={request} />
                     </NotificationContainer>
 
                     <ProfileContainer>
                         <img src='femaleAvatar.jpg' width="47.5" height='42.5' onClick={() => navigate('/profile')}></img>
-                        <Menudropdown/>
+                        <Menudropdown />
                     </ProfileContainer>
                 </HeaderRightContainer>
             </HeaderContainer>

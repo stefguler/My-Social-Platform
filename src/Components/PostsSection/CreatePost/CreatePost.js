@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import './create-post-style.css'
-import { PostButton, PostDots, PostList, WhosePostFooter, WhosePostPicture, WhosePostText, WhosePostHeader, PostRightSecondText, PostRightFooter, PostRightFirstText, PostRightFirstHeader, PostFirstHeaderText, PostContainer, CreateP, PostInput, PostFirst, CreatePostPhoto, PostFirstHeader, PostFirstText, PostFirstPictures, PostFooter, PostRightFirst, PostRightSecond, PostRightSecondHeader, WhosePost } from './Style'
+import { PostFooterLikes, PostButton, PostDots, PostList, WhosePostFooter, WhosePostPicture, WhosePostText, WhosePostHeader, PostRightSecondText, PostRightFooter, PostRightFirstText, PostRightFirstHeader, PostFirstHeaderText, PostContainer, CreateP, PostInput, PostFirst, CreatePostPhoto, PostFirstHeader, PostFirstText, PostFirstPictures, PostFooter, PostRightFirst, PostRightSecond, PostRightSecondHeader, WhosePost } from './Style'
 
  
 
@@ -77,11 +77,11 @@ const [ post, setPost ] = useState([])
             <CreateP>
             
                 <CreatePostPhoto>
-                <img src='Image (5).png' alt='ph'></img>
+                <img src='femaleAvatar.jpg' alt='ph'></img>
                 {/* <p> {post.user.first_name} {post.user.last_name} </p> */}
                 </CreatePostPhoto>
             <PostInput>
-                <input type='text' placeholder='Add a post' value={createpost} onChange={(event) => setCreatePost(event.target.value)} />
+                <input type='text' placeholder="What's on your mind?" value={createpost} onChange={(event) => setCreatePost(event.target.value)} />
 
             </PostInput>
             <PostButton>
@@ -114,7 +114,7 @@ const [ post, setPost ] = useState([])
                           </p>
                       </PostFirstText>
                       <PostFirstPictures>
-                          <img src ='Image (1).png' alt='ph'></img>
+                          <img src ='' alt='ph'></img>
                           <img src='Image (2).png' alt='ph'></img>
                           <img src='Image (3).png' alt='ph'></img>
                           <img src='Image.png' alt='ph'></img>
@@ -129,10 +129,15 @@ const [ post, setPost ] = useState([])
                                       <img src='Shape (2).svg' alt='share'></img>
                                       <p>Share</p>
                                   </div>
-                              </div>    
+                                  </div> 
+                                  <div>
+                              {/* <PostFooterLikes> */}
                               <div>
-                                  <p>likes</p>
-                              </div>   
+                                  <p>0 likes</p>
+                              </div> 
+                                
+                              {/* </PostFooterLikes> */}
+                              </div>  
                       </PostFooter>
                   </PostFirst>
                 ))}

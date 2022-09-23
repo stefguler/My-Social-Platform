@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const PostContainer = styled.div`
-    background: #3b5998;
+    background: #f2f2f2;
     width: 100%;
     padding: 1rem;
     
@@ -64,6 +64,7 @@ export const PostInput = styled.div`
     input {
     width: 217px;
     height: 26px;
+    border: 0;
     }
 
 `
@@ -85,7 +86,7 @@ export const PostFirstHeader = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 5px solid #3b5998;
+    border-bottom: 5px solid #f2f2f2;
   
     div {
         display: flex;
@@ -208,7 +209,7 @@ border-radius: 4px;
 export const PostFooter = styled.div`
 
 height: 53px;
-width: 560px;
+width: 100%;
 display: flex;
 justify-content: space-between;
 
@@ -216,10 +217,36 @@ div {
     display: flex;
     flex-direction: row;
     padding: 10px;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+p{
+    padding-left: 15px;
+
+}
+
+
+
+img{
+   height: 20px;
+   width: 20px;
+    
 }
 
 
 `
+
+export const PostFooterLikes = styled.div`
+
+    p{
+        /* display: flex;
+        align-items: ; */
+        /* padding-right: 20px; */
+        margin: 0px -3px;
+    }
+`
+
 export const PostRightSecondHeader = styled.div`
 
    width: 560px;
