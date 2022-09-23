@@ -19,7 +19,7 @@ const UserCardContainer = styled.div`
 `
 
 const BackgroundContainer = styled.div`
-background: lightgray 10%;
+background: white;
 `
 
 
@@ -52,52 +52,6 @@ export function FindFriends() {
 
     }, [token]);
 
-
-    // const [defaultDescription, setDefaultDescription] = useState('Lorem ipsum dolor sit amet, vim ut quas volumus probatus, has tantas laudem iracundia et, ad per utamur ceteros apeirian')
-    // const currentUsers = []
-
-  
-    // useEffect(() => {
-    //     pushUser('Albert', 'Lawrence', 'Zürich', 'Switzerland', defaultDescription,
-    //         ['Cooking', 'Travel', 'Reading', 'Swimming', 'Swimming'], 'maleAvatar.jpg')
-
-    //     pushUser('Leticia', 'Suàrez', 'Rome', 'Italy', defaultDescription,
-    //         ['Cooking', 'Travel', 'Reading'], 'femaleAvatar.jpg')
-
-    //     pushUser('Patricia', 'Jindal', 'Munich', 'Germany', defaultDescription,
-    //         ['Cooking', 'Travel', 'Reading', 'Swimming', 'Swimming'], 'femaleAvatar.jpg')
-
-    //     pushUser('Frank', 'Baker', 'Los Angeles', 'USA', defaultDescription,
-    //         ['Cooking', 'Travel', 'Reading', 'Swimming', 'Swimming'], 'maleAvatar.jpg')
-
-    //     pushUser('Thomas', 'Castro', 'Barcelona', 'Spain', defaultDescription,
-    //         ['Cooking', 'Travel', 'Reading', 'Swimming', 'Swimming'], 'maleAvatar.jpg')
-
-    //     pushUser('Max', 'Martinez', 'Leon', 'France', defaultDescription,
-    //         ['Cooking', 'Travel', 'Reading', 'Swimming', 'Swimming'], 'maleAvatar.jpg')
-
-    //     console.log(users)
-
-    // }, [])
-
-    // let User = class {
-    //     constructor(firstname, lastname, city, country, description, labels, avatar) {
-    //         this.firstname = firstname;
-    //         this.lastname = lastname;
-    //         this.city = city;
-    //         this.country = country;
-    //         this.description = description;
-    //         this.labels = labels;
-    //         this.avatar = avatar
-    //     }
-
-    // }
-
-    // const pushUser = (firstname, lastname, city, country, description, labels, avatar) => {
-    //     const newUser = new User(firstname, lastname, city, country, description, labels, avatar)
-    //     currentUsers.push(newUser)
-    //     setUsers(currentUsers)
-    // }
 
     return (
         <>
