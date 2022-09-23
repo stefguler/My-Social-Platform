@@ -175,6 +175,8 @@ export const FormCompleteButton = styled.button`
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: hidden;
+    cursor: pointer;
+    color: white;
 `
 
 export const PageDots = styled.div`

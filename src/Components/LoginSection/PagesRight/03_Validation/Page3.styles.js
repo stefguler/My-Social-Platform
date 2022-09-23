@@ -74,6 +74,7 @@ export const FormContinueButton = styled.div`
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: hidden;
+    cursor: pointer;
 `
 
 export const PageDots = styled.div`

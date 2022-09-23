@@ -5,9 +5,10 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from "react-redux";
 
 
-function Page3() {
+function Page3(props) {
     const navigate = useNavigate();
     const registerEmail = useSelector(state => state.auth.registerEmail)
+
     
     return (
         <RightContainer>
@@ -22,7 +23,7 @@ function Page3() {
                 </IconContainer>
                 <MessageWrapper>
                     <Message>
-                        <p>We've sent a confirmation code to your email</p>
+                        <p>We've sent a confirmation code to your email {props.email}</p>
                     </Message>
                     <Message>
                         <p>{registerEmail}</p>
