@@ -2,11 +2,13 @@ import { RightContainer, MessageContainer, MessageTitle, IconContainer, MessageW
 import { GoPrimitiveDot } from 'react-icons/go'
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from "react-redux";
 
 
 function Page3() {
     const navigate = useNavigate();
-
+    const registerEmail = useSelector(state => state.auth.registerEmail)
+    
     return (
         <RightContainer>
 
@@ -23,7 +25,7 @@ function Page3() {
                         <p>We've sent a confirmation code to your email</p>
                     </Message>
                     <Message>
-                        <p>johnsmith@gmail.com</p>
+                        <p>{registerEmail}</p>
                     </Message>
                 </MessageWrapper>
 

@@ -46,10 +46,10 @@ function Page1() {
                     result.json().then(data => {
                         const accessToken = data.access
                         const refreshToken = data.refresh
-                        const username = data.user.username
+                        // const username = data.user.username
                         dispatch(setAccessToken(accessToken))
                         dispatch(setRefreshToken(refreshToken))
-                        dispatch(setCurrentUser(username))
+                        dispatch(setCurrentUser(data.user))
                         navigate('/posts')
                     })
                 }

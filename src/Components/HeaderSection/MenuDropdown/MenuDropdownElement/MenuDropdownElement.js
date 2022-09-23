@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import styled from 'styled-components';
+import { useDispatch } from "react-redux";
+import { setAccessToken, setCurrentUser, setRefreshToken } from "../../../../redux/slices/Auth";
 
 
 const ElementContainer = styled.div`
@@ -48,11 +50,15 @@ const NavLinkLogoutContainer = styled.div`
 
 `
 
-const handleLogout = () => {
-    console.log('loging out!');
-}
 
 export default function MenuDropdownElement() {
+    
+    const dispatch = useDispatch();
+    const handleLogout = () => {
+        dispatch(setAccessToken(undefined))
+        dispatch(setRefreshToken(undefined))
+        dispatch(setCurrentUser(undefined))
+    }
 
     return (
         <>

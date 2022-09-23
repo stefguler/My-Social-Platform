@@ -26,8 +26,12 @@ const ActionsContainer = styled.div`
     display: flex;
     position: absolute;
     align-items: center;
-    right: 3rem;
+    right: 1.5rem;
     gap: 1.5rem;
+
+    i {
+        font-size: 25px;
+    }
 `
 const AcceptButtonContainer = styled.div`
     div {
@@ -50,8 +54,6 @@ export default function Notification(props) {
 
     const item = props.item;
     const itemType = props.type;
-
-    console.log(item)
 
     return (
         <RequestContainer>
