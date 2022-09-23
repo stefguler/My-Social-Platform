@@ -1,1 +1,1 @@
-export {defaul} from './FindFriends'
+export {default} from './FindFriends'
