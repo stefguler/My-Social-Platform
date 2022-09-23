@@ -77,7 +77,7 @@ const [ post, setPost ] = useState([])
             <CreateP>
             
                 <CreatePostPhoto>
-                <img src='Image (5).png' alt='ph'></img>
+                <img src='femaleAvatar.jpg' alt='ph'></img>
                 {/* <p> {post.user.first_name} {post.user.last_name} </p> */}
                 </CreatePostPhoto>
             <PostInput>
@@ -114,7 +114,7 @@ const [ post, setPost ] = useState([])
                           </p>
                       </PostFirstText>
                       <PostFirstPictures>
-                          <img src ='Image (1).png' alt='ph'></img>
+                          <img src ='' alt='ph'></img>
                           <img src='Image (2).png' alt='ph'></img>
                           <img src='Image (3).png' alt='ph'></img>
                           <img src='Image.png' alt='ph'></img>

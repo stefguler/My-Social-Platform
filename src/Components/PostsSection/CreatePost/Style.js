@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const PostContainer = styled.div`
-    background: #3b5998;
+    background: lightgray;
     width: 100%;
     padding: 1rem;
     

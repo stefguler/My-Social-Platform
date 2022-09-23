@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 const RequestContainer = styled.div`
@@ -54,6 +55,51 @@ export default function Notification(props) {
 
     const item = props.item;
     const itemType = props.type;
+    const token = useSelector(state => state.auth.accessToken)
+
+    const handleAcceptClick = () => {
+        console.log('clicked accept: ',item.id)
+        
+        const url = `https://motion.propulsion-home.ch/backend/api/social/friends/requests/${item.id}/`
+        const status = {
+            status: "A"
+        };
+        
+        const config = {
+            method: "PATCH",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }),
+            body: JSON.stringify(status)
+        }
+    
+        fetch(url, config).then(
+            response => response.json())
+
+    }
+
+    const handleDeclineClick = () => {
+        console.log('clicked: decline ', item.id)
+        
+        const url = `https://motion.propulsion-home.ch/backend/api/social/friends/requests/${item.id}/`
+        // const status = {
+        //     status: "A"
+        // };
+        
+        const config = {
+            method: "DELETE",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }),
+            // body: JSON.stringify(status)
+        }
+    
+        fetch(url, config).then(
+            response => response.json())
+
+    }
 
     return (
         <RequestContainer>
@@ -65,11 +111,11 @@ export default function Notification(props) {
         </RequestNameContainer>
         <ActionsContainer>
             <AcceptButtonContainer>
-                <div with="40px" heigh="40px" background="purple">
+                <div with="40px" heigh="40px" background="purple" onClick={() => handleAcceptClick()}>
                     <i class="fa-solid fa-check"></i>
                 </div>
             </AcceptButtonContainer>
-            <i class="fa-solid fa-x"></i>
+            <i class="fa-solid fa-x" onClick={() => handleDeclineClick()}></i>
         </ActionsContainer>
     </RequestContainer>
         

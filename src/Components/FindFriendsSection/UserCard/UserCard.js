@@ -14,6 +14,7 @@ padding: 2rem;
 height: 489px;
 width: 362px;
 gap: 1rem;
+padding: 1rem;
 
 img {
     border-radius: 50%
@@ -32,6 +33,7 @@ display: flex;
 padding: 0 1rem 1rem 1rem;
 gap: 0.2rem;
 font-size: 14px;
+color: lightgray;
 `;
 
 
@@ -74,7 +76,6 @@ span {
 export default function UserCard(props) {
 
   const item = props.user
-  console.log('from return', item)
   const defaultDescription = 'Lorem ipsum dolor sit amet, vim ut quas volumus probatus, has tantas laudem iracundia et, ad per utamur ceteros apeirian'
 
   return (
