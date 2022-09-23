@@ -34,6 +34,7 @@ export const ButtonSignUp = styled.div`
     border: solid grey 1px;
     border-radius: 40px;
     font-size: 13px;
+    cursor: pointer;
 `
 
 export const ButtonSignUpButton = styled.button`
@@ -43,6 +44,7 @@ export const ButtonSignUpButton = styled.button`
     border-left-style: hidden;
     border-bottom-style: hidden;
     background-color: white;
+    cursor: pointer;
 `
 
 export const FormContainer = styled.div`
@@ -121,6 +123,8 @@ export const FormSubmitButton = styled.button`
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: hidden;
+    cursor: pointer;
+    color: white;
 `
 
 export const PageDots = styled.div`
