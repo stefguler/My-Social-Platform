@@ -10,8 +10,14 @@ const ProfileInfo = () => {
     display: flex;
     width: 1152px;
     height: 400px;
-    margin: 0 auto;
+    
     background: #fff;
+    position: absolute;
+    z-index: 999;
+    top: 5rem;
+    align-items: center;
+    left: 20%;
+
     `
     const AvatarInfo = styled.div`
     display:flex;
@@ -25,7 +31,7 @@ const ProfileInfo = () => {
     width: 80px;
     height: 80px;
     border-radius:50px;
-    fit-content: cover;
+    
     `
     const AvatarContainer = styled.div`
     width: 250px;
@@ -151,6 +157,7 @@ const ProfileInfo = () => {
     const Phone = styled.p`
     
     `
+    
     return (
         <>
         <Container>

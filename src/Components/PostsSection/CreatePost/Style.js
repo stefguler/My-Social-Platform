@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 
 export const PostContainer = styled.div`
-    background: lightgrey;
-    display: grid;
-    grid-template-columns: 2fr;
+    background: #3b5998;
+    width: 100%;
+    padding: 1rem;
     
 `
 
 export const CreateP = styled.div`   
-    position: absolute;
+    // position: absolute;
     width: 560px;
     height: 120px;
     left: 144px;
@@ -21,6 +21,28 @@ export const CreateP = styled.div`
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 10px 20px rgba(0, 0, 0, 0.05);
     border-radius: 4px;
     justify-content: space-around;
+    margin-bottom: 2rem;
+`
+export const PostButton = styled.div`
+    img {
+        height: 60px;
+        width: 80px;
+    }
+
+    button {
+        height: 60px;
+        width: 80px;
+        background-color: white;
+        border: 0;
+    }
+`
+
+export const PostList = styled.div`
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 1rem;
+    
 `
 
 export const CreatePostPhoto = styled.div`
@@ -48,11 +70,10 @@ export const PostInput = styled.div`
 
 
 export const PostFirst =styled.div`
-position: absolute;
-width: 560px;
-height: 750px;
-left: 144px;
-top: 354px;
+
+// width: 560px;
+// height: 750px;
+
 
 background: #FFFFFF;
 box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 10px 20px rgba(0, 0, 0, 0.05);
@@ -64,6 +85,7 @@ export const PostFirstHeader = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 5px solid #3b5998;
   
     div {
         display: flex;
@@ -73,22 +95,38 @@ export const PostFirstHeader = styled.div`
 
 img{
     border-radius: 50px;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
 }
+
+
 `
+export const PostDots = styled.div`
+    
+   p{
+    font-size: 30px;
+
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    padding: 2px 10px;
+    top: 10px;
+} 
+`
+
 export const PostFirstHeaderText = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0px;
-
+    padding: 10px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 `
-
 export const PostFirstText= styled.div`
    
      width: 560px;
     height: 52px;
-    margin 10px;
+    margin: 10px;
 `
 export const PostFirstPictures = styled.div`
     display: grid;
@@ -96,10 +134,11 @@ export const PostFirstPictures = styled.div`
     margin-right: 10px;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 5px;
-    
 
-
-
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
 
 `
  export const PostRightFirst = styled.div`
@@ -226,7 +265,7 @@ div{
 }
 
 p {
-    display; flex;
+    display: flex;
     flex-direction: column;
     
 }
