@@ -121,6 +121,11 @@ export default function Header() {
 
     console.log(request)
 
+    const len = request.filter((request) => {
+        return request.status === "P"})
+
+        // console.log('len len: ', len.length)
+
     const navigate = useNavigate();
 
     return (
@@ -137,7 +142,9 @@ export default function Header() {
                 <HeaderRightContainer>
 
                     <NotificationContainer>
-                        <NotificationCircle>{request.length}</NotificationCircle>
+                        <NotificationCircle>{len.length}</NotificationCircle>
+                        {/* <NotificationCircle>{request.filter((request) => {
+                            return request.status === "P"})}</NotificationCircle> */}
                         <NotificationDropdown apidata={request} />
                     </NotificationContainer>
 
