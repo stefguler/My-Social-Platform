@@ -1,15 +1,19 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 
 const UserCardContainer = styled.div`
 /* margin-top: 1rem; */
 display: flex;
 background: white;
+box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.15);
+border-radius: 0.5rem;
 flex-direction: column;
 align-items: center;
 padding: 2rem;
 height: 489px;
 width: 362px;
+gap: 1rem;
 
 img {
     border-radius: 50%
@@ -66,36 +70,35 @@ span {
 }
 `
 
-const BackgroundContainer = styled.div`
-background: gray;
-`
-
 
 export default function UserCard(props) {
 
   const item = props.user
+  console.log('from return', item)
+  const defaultDescription = 'Lorem ipsum dolor sit amet, vim ut quas volumus probatus, has tantas laudem iracundia et, ad per utamur ceteros apeirian'
 
   return (
     <>
       <UserCardContainer>
-        <img src={item.avatar} width='100'></img>
+        <img src={(item.avatar === null) ? 'maleAvatar.jpg' : item.avatar} width='100'></img>
         <NamingContainer>
-          <span>{item.firstname}</span>
-          <span>{item.lastname}</span>
+          <span>{item.first_name}</span>
+          <span>{item.last_name}</span>
         </NamingContainer>
         <LocationContainer>
-          <span>{item.city},</span>
-          <span>{item.country}</span>
+          <span>{(item.location === "") ? 'Location, City' : item.location}</span>
         </LocationContainer>
         <SocialActionsContainer>
           <button>FOLLOW</button>
           <button>ADD FRIEND</button>
         </SocialActionsContainer>
-        <DescriptionContainer>{item.description}</DescriptionContainer>
+        <DescriptionContainer>{(item.about_me === "") ? defaultDescription : item.about_me}</DescriptionContainer>
         <LabelContainer>
-          {item.labels.map(label => {
-            return <span key={label}>{label}</span>
-          })}
+          {
+          (item.things_user_likes.length > 0) ? item.things_user_likes.map(label => {
+              return <span key={label}> {label}</span>}) : ['Swimming', 'Food', 'Others'].map(labelFake => {
+                return <span key={labelFake}> {labelFake}</span>})
+          }
         </LabelContainer>
       </UserCardContainer>
     </>
