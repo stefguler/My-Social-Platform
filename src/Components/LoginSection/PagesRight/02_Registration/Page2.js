@@ -22,7 +22,7 @@ function Page2() {
         e.preventDefault()
         console.log("Email: ", email)
         dispatch(setRegisterEmail(email))
-        navigate('/validate')
+        navigate('/validate', {state: {email: email}})
 
         const url = "https://motion.propulsion-home.ch/backend/api/auth/registration/"
         const jsObject = {
