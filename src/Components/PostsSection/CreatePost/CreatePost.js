@@ -114,7 +114,7 @@ const [ post, setPost ] = useState([])
                           </p>
                       </PostFirstText>
                       <PostFirstPictures>
-                          <img src ='' alt='ph'></img>
+                          <img src ='Image (1).png' alt='ph'></img>
                           <img src='Image (2).png' alt='ph'></img>
                           <img src='Image (3).png' alt='ph'></img>
                           <img src='Image.png' alt='ph'></img>
