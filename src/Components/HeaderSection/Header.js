@@ -85,16 +85,8 @@ const ProfileContainer = styled.div`
 export default function Header() {
 
     const [request, setRequests] = useState(0)
-    // const [notificationCount, setNotificationCount] = useState(0)
+    const [lenArr, setLen] = useState([])
     const token = useSelector(state => state.auth.accessToken)
-
-    // const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDI2MzEzLCJqdGkiOiI4MWVkMzMxMzc5N2M0MGU4YmU3YzBjYzZiMGU2NWFmOSIsInVzZXJfaWQiOjE3NTZ9.qp2_KS2BIKv-97apVWi58jc1GaqhGDtLXKhXFkwA7D8"
-
-
-    // const jsObject = {
-    //     // email: email,
-    //     // password: password
-    // }
 
     useEffect(() => {
 
@@ -116,13 +108,16 @@ export default function Header() {
             //     data => setNotificationCount(data.count))
             .then(
                 data => setRequests(data.results))
+            .then(
+                data => setLen(request.filter((request) => {
+                    return request.status === "P"
+                }))
+            )
 
     }, [token]);
 
-    console.log(request)
+    // console.log(request)
 
-    // const len = request.filter((request) => {
-    //     return request.status === "P"})
 
 
     const navigate = useNavigate();
