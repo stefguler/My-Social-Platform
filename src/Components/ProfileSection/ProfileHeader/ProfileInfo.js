@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components"
+import { Link } from 'react-router-dom'
 
 const ProfileInfo = () => {
 
@@ -158,7 +159,7 @@ const ProfileInfo = () => {
                     <Avatar src="https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?cs=srgb&dl=pexels-asad-photo-maldives-1591373.jpg&fm=jpg"/>
                     <Name>Jeison Rodriguez</Name>
                     <Address>Zürich, Switzerland</Address>
-                    <EditProfile>EDIT PROFILE</EditProfile>
+                    <EditProfile><Link to='/edit-profile'>EDIT PROFILE</Link></EditProfile>
                 </AvatarContainer>
             </AvatarInfo> 
 
