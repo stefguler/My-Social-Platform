@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { useState } from "react";
+import AddFriendButton from "../Buttons/AddFriendButton";
+import FollowButton from "../Buttons/FollowButton/FollowButton";
+import FollowingButton from "../Buttons/FollowingButton/FollowingButton";
+import FriendButton from "../Buttons/FriendsButton/FriendsButton";
 
 
 const UserCardContainer = styled.div`
@@ -17,13 +20,17 @@ gap: 1rem;
 padding: 1rem;
 
 img {
-    border-radius: 50%
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
 }
 `;
 
 const NamingContainer = styled.div`
 display: flex;
-padding: 1rem 1rem 0.25rem 1rem;
+align-items: center;
+justify-content: center;
+/* padding: 1rem 1rem 0.25rem 1rem; */
 gap: 0.5rem;
 font-size: 22px;
 `;
@@ -56,7 +63,7 @@ button {
 `;
 
 const DescriptionContainer = styled.p`
-width: 65%;
+width: 87%;
 line-height: 24px;
 font-size: 14px;
 text-align: center;
@@ -65,9 +72,15 @@ text-align: center;
 const LabelContainer = styled.div`
 display: grid;
 grid-template-columns:  repeat(3, 1fr);
-gap: 1rem;
+gap: 0.5rem;
 
 span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.3rem;
+    background: rgba(221, 221, 221, 0.288);
+    border-radius: 2rem;
     font-size: 14px;
 }
 `
@@ -75,29 +88,32 @@ span {
 
 export default function UserCard(props) {
 
-  const item = props.user
+  const user = props.user
   const defaultDescription = 'Lorem ipsum dolor sit amet, vim ut quas volumus probatus, has tantas laudem iracundia et, ad per utamur ceteros apeirian'
+
+  // console.log('user from card: ', user)
+
 
   return (
     <>
       <UserCardContainer>
-        <img src={(item.avatar === null) ? 'maleAvatar.jpg' : item.avatar} width='100'></img>
+        <img src={(user.avatar === null) ? 'maleAvatar.jpg' : user.avatar} width='100'></img>
         <NamingContainer>
-          <span>{item.first_name}</span>
-          <span>{item.last_name}</span>
+          <span>{user.first_name}</span>
+          <span>{user.last_name}</span>
         </NamingContainer>
         <LocationContainer>
-          <span>{(item.location === "") ? 'Location, City' : item.location}</span>
+          <span>{(user.location === "") ? 'Location, City' : user.location}</span>
         </LocationContainer>
         <SocialActionsContainer>
-          <button>FOLLOW</button>
-          <button>ADD FRIEND</button>
+          {user.logged_in_user_is_following ? <FollowingButton user={user}/> : <FollowButton user={user}/> }
+          {user.logged_in_user_is_friends || user.logged_in_user_received_fr ? <FriendButton user={user} /> : <AddFriendButton user={user}/>}
         </SocialActionsContainer>
-        <DescriptionContainer>{(item.about_me === "") ? defaultDescription : item.about_me}</DescriptionContainer>
+        <DescriptionContainer>{(user.about_me === "") ? defaultDescription : user.about_me}</DescriptionContainer>
         <LabelContainer>
           {
-          (item.things_user_likes.length > 0) ? item.things_user_likes.map(label => {
-              return <span key={label}> {label}</span>}) : ['Swimming', 'Food', 'Others'].map(labelFake => {
+          (user.things_user_likes.length > 0) ? user.things_user_likes.map(label => {
+              return <span key={label}> {label}</span>}) : ['Lorem ', 'ipsum ', 'dolor', 'sit', 'amet', 'volumus' ].map(labelFake => {
                 return <span key={labelFake}> {labelFake}</span>})
           }
         </LabelContainer>

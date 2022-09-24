@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
@@ -79,13 +80,12 @@ export default function Notification(props) {
 
     }
 
+    // 
+    
     const handleDeclineClick = () => {
         console.log('clicked: decline ', item.id)
         
         const url = `https://motion.propulsion-home.ch/backend/api/social/friends/requests/${item.id}/`
-        // const status = {
-        //     status: "A"
-        // };
         
         const config = {
             method: "DELETE",
@@ -93,7 +93,6 @@ export default function Notification(props) {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             }),
-            // body: JSON.stringify(status)
         }
     
         fetch(url, config).then(
@@ -102,21 +101,24 @@ export default function Notification(props) {
     }
 
     return (
-        <RequestContainer>
+
+<RequestContainer>
         <img width='30' border-radius='50%' src="femaleAvatar.jpg"></img>
         <RequestNameContainer>
             <RequestName>{(itemType === 1) ? item.requester.first_name : item.receiver.first_name} { }
              {(itemType === 1) ? item.requester.last_name : item.receiver.last_name }</RequestName>
             <RequestLocation>{(itemType === 1) ? item.requester.location : item.receiver.location}</RequestLocation>
         </RequestNameContainer>
-        <ActionsContainer>
+        {(itemType === 1) ? 
+        <ActionsContainer> 
             <AcceptButtonContainer>
                 <div with="40px" heigh="40px" background="purple" onClick={() => handleAcceptClick()}>
-                    <i class="fa-solid fa-check"></i>
+                    <i className="fa-solid fa-check"></i>
                 </div>
             </AcceptButtonContainer>
-            <i class="fa-solid fa-x" onClick={() => handleDeclineClick()}></i>
+            <i className="fa-solid fa-x" onClick={() => handleDeclineClick()}></i>
         </ActionsContainer>
+     : <ActionsContainer><i class="fa-regular fa-clock"></i></ActionsContainer> }
     </RequestContainer>
         
     )

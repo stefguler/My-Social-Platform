@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NotificationDropdownElement from './NotificationDropdownElement/NotificationDropdownElement'
 import styled from 'styled-components'
+import { useSelector } from "react-redux";
 
 const DropdownButton = styled.div`
     cursor: pointer;
@@ -20,8 +21,7 @@ const DropdownButton = styled.div`
 export default function Dropdown(props) {
 
     const apidata = props.apidata
-    const len = props.len.length;
-    console.log(len)
+    const notificationCount = useSelector(state => state.notifications.notificationCount)
     const [display, setDisplay] = useState(false);
 
     const handleClick = () => {
@@ -36,7 +36,7 @@ export default function Dropdown(props) {
                     <i className="fa-solid fa-bell"></i>
                 </div>
                 {
-                    (display && len !== 0) ? <NotificationDropdownElement apidata={apidata}/> : null
+                    (display && notificationCount !== 0) ? <NotificationDropdownElement apidata={apidata}/> : null
                 }
             </DropdownButton>
         </>

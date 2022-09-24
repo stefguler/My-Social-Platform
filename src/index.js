@@ -5,7 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './redux/Store'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import {FindFriends}  from './components/FindFriendsSection/FindFriends'
+import FindFriendsSection  from './components/FindFriendsSection/FindFriendsSection'
 import ProfileSection from './components/ProfileSection/ProfileSection';
 import PostsSection from './components/PostsSection/PostsSection';
 import SignUp from './components/LoginSection/PagesRight/02_Registration/SignUp';
@@ -23,7 +23,7 @@ root.render(
         <Route path="/signup" element={<SignUp />} />
         <Route path="/validate" element={<Validation />} />
         <Route path="/verificate" element={<Verification />} />
-        <Route path="/findfriends" element={<FindFriends />} />
+        <Route path="/findfriends" element={<FindFriendsSection />} />
         <Route path="/profile" element={<ProfileSection />} />
         <Route path="/posts" element={<PostsSection />} />
         <Route path="/edit-profile" element={<EditProfile />} />

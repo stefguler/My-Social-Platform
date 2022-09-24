@@ -91,7 +91,7 @@ export default function NavList() {
             </NavLink>
             <NavLink to="/findFriends" activeClassName="current" exact>
                 <li>
-                    <i class="fa-solid fa-user-group"></i>
+                    <i className="fa-solid fa-user-group"></i>
                     Find Friends
                 </li>
             </NavLink>

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation/Navigation'
-import Menudropdown from './MenuDropdown/MenuDropdown'
-import NotificationDropdown from './NotificationDropdown';
+import Menudropdown from './Dropdowns/MenuDropdown/MenuDropdown'
+import NotificationDropdown from './Dropdowns/NotificationDropdown';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setNotificationCounter } from '../../redux/slices/Notifications';
 
 
 const HeaderContainer = styled.header`
@@ -84,13 +85,19 @@ const ProfileContainer = styled.div`
 `
 export default function Header() {
 
-    const [request, setRequests] = useState(0)
-    const [lenArr, setLen] = useState([])
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [request, setRequests] = useState([])
+    const notificationCounter = useSelector(state => state.notifications.notificationCounter)
+    const currentUser = useSelector(state => state.auth.currentUser)
     const token = useSelector(state => state.auth.accessToken)
 
     useEffect(() => {
-
         if (token === undefined) navigate('/')
+        updateNotifications();
+    }, [token, request]);
+
+    const updateNotifications = () => {
 
         const url = "https://motion.propulsion-home.ch/backend/api/social/friends/requests/"
         const config = {
@@ -99,30 +106,25 @@ export default function Header() {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             }),
-            // body: JSON.stringify(jsObject)
         }
 
-        fetch(url, config).then(
-            response => response.json())
-            // .then(
-            //     data => setNotificationCount(data.count))
-            .then(
-                data => setRequests(data.results))
-            .then(
-                data => setLen(request.filter((request) => {
-                    return request.status === "P"
-                }))
-            )
+        fetch(url, config)
+            .then(response => response.json())
+            .then(data => setRequests(data.results))
+        
+        getNotificationLength();
+    
+        }
 
-            console.log(lenArr)
-
-    }, [token, request]);
-
-    // console.log(request)
+    const getNotificationLength = () => {
+        const pendingNotificationCount = request.filter((request) => {
+            return request.status === "P"
+        })
+        if (notificationCounter !== pendingNotificationCount.length) dispatch(setNotificationCounter(pendingNotificationCount.length))
+        return pendingNotificationCount.length
+    }
 
 
-
-    const navigate = useNavigate();
 
     return (
         <>
@@ -138,13 +140,13 @@ export default function Header() {
                 <HeaderRightContainer>
 
                     <NotificationContainer>
-                        <NotificationCircle>{lenArr.length}</NotificationCircle>
-                        {/* <NotificationCircle>{request.filter((request) => {
-                            return request.status === "P"})}</NotificationCircle> */}
-                        <NotificationDropdown apidata={request} len={lenArr} />
+                        <NotificationCircle>{getNotificationLength()}</NotificationCircle>
+                        <NotificationDropdown apidata={request} />
                     </NotificationContainer>
 
                     <ProfileContainer>
+                        <span style={{textTransform: 'uppercase'}}>{currentUser.username}</span>
+                        <span style={{textTransform: 'uppercase'}}>{currentUser.id}</span>
                         <img src='femaleAvatar.jpg' width="47.5" height='42.5' onClick={() => navigate('/profile')}></img>
                         <Menudropdown />
                     </ProfileContainer>

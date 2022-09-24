@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import Notification from '../Notification/Notification';
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-
-
 
 const ElementContainer = styled.div`
     padding: 1rem;
@@ -37,7 +34,9 @@ export default function NotificationDropdownElement(props) {
 
     const apidata = props.apidata;
     const currentUser = useSelector(state => state.auth.currentUser)
-    console.log(apidata)
+
+
+
     return (
         <>
             <ElementContainer>

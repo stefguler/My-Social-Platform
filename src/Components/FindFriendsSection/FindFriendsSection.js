@@ -19,11 +19,11 @@ const UserCardContainer = styled.div`
 `
 
 const BackgroundContainer = styled.div`
-background: white;
+background: rgba(221, 221, 221, 0.01);;
 `
 
 
-export function FindFriends() {
+export default function FindFriends() {
 
     const [users, setUsers] = useState([])
     const token = useSelector(state => state.auth.accessToken)
@@ -33,7 +33,7 @@ export function FindFriends() {
 
         // if (token === undefined) navigate('/')
 
-        const url = "https://motion.propulsion-home.ch/backend/api/users/?limit=25&offset=1000"
+        const url = "https://motion.propulsion-home.ch/backend/api/users/?limit=250&offset=1000"
         const config = {
             method: "GET",
             headers: new Headers({
@@ -59,9 +59,8 @@ export function FindFriends() {
             <BackgroundContainer>
             <UserCardContainer>
                 {
-                    users.map((user) => {
-                        console.log('from user map',user)
-                        if (user.first_name !== '') return <UserCard key={user} user={user}/>
+                    users.map((user, idx) => {
+                        if (user.first_name !== '') return <UserCard key={idx} user={user}/>
                     })
                 }
             </UserCardContainer>

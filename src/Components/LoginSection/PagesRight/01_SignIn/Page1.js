@@ -23,8 +23,6 @@ function Page1() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("Email: ", email)
-        console.log("Password: ", password)
 
         const url = "https://motion.propulsion-home.ch/backend/api/auth/token/"
         const credentials = {
@@ -46,7 +44,6 @@ function Page1() {
                     result.json().then(data => {
                         const accessToken = data.access
                         const refreshToken = data.refresh
-                        // const username = data.user.username
                         dispatch(setAccessToken(accessToken))
                         dispatch(setRefreshToken(refreshToken))
                         dispatch(setCurrentUser(data.user))
