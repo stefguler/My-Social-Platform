@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import './create-post-style.css'
 import { PostFooterLikes, PostButton, PostDots, PostList, WhosePostFooter, WhosePostPicture, WhosePostText, WhosePostHeader, PostRightSecondText, PostRightFooter, PostRightFirstText, PostRightFirstHeader, PostFirstHeaderText, PostContainer, CreateP, PostInput, PostFirst, CreatePostPhoto, PostFirstHeader, PostFirstText, PostFirstPictures, PostFooter, PostRightFirst, PostRightSecond, PostRightSecondHeader, WhosePost } from './Style'
 
@@ -8,6 +9,7 @@ import { PostFooterLikes, PostButton, PostDots, PostList, WhosePostFooter, Whose
 export const CreatePost = () => {
 const [ createpost, setCreatePost ] = useState("")
 const [ post, setPost ] = useState([])
+const token = useSelector(state => state.auth.accessToken)
 
 
 
@@ -18,7 +20,7 @@ const [ post, setPost ] = useState([])
         const config = {
             method: "GET",
             headers: new Headers ({
-                "Authorization": `Bearer ${"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDE3NDc5LCJqdGkiOiI4MGNiNDY2Y2JjZjE0ZDRlOTM2ZDNiMTM2ZmExMGYwZCIsInVzZXJfaWQiOjE3NTZ9.GqkfxTYYzjTFYzshjuH-KBXSUGb6IOjdb5-RW5_WiUU"}`
+                "Authorization": `Bearer ${token}`
             })
         }
             fetch(url, config)
@@ -41,7 +43,7 @@ const [ post, setPost ] = useState([])
             mode:  'cors',
             headers: new Headers ({
                 "Content-Type": 'application/json',
-                "Authorization": `Bearer ${"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MDE3NDc5LCJqdGkiOiI4MGNiNDY2Y2JjZjE0ZDRlOTM2ZDNiMTM2ZmExMGYwZCIsInVzZXJfaWQiOjE3NTZ9.GqkfxTYYzjTFYzshjuH-KBXSUGb6IOjdb5-RW5_WiUU"}`
+                "Authorization": `Bearer ${token}`
             }),
             body: JSON.stringify({
                 content: `${createpost}`,

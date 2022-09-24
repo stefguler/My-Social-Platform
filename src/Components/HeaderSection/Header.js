@@ -114,7 +114,9 @@ export default function Header() {
                 }))
             )
 
-    }, [token]);
+            console.log(lenArr)
+
+    }, [token, request]);
 
     // console.log(request)
 
@@ -136,10 +138,10 @@ export default function Header() {
                 <HeaderRightContainer>
 
                     <NotificationContainer>
-                        <NotificationCircle>{request.length}</NotificationCircle>
+                        <NotificationCircle>{lenArr.length}</NotificationCircle>
                         {/* <NotificationCircle>{request.filter((request) => {
                             return request.status === "P"})}</NotificationCircle> */}
-                        <NotificationDropdown apidata={request} />
+                        <NotificationDropdown apidata={request} len={lenArr} />
                     </NotificationContainer>
 
                     <ProfileContainer>
