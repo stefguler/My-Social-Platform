@@ -81,15 +81,15 @@ export default function NavList() {
     return (
         <>
             <NavUnlisted>
-                <NavLink to="/posts" activeClassName="current" exact>
+                <NavLink to="/posts" activeClassName="current" exact="true">
                     <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="lightgray" class="bi bi-grid-1x2-fill" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="lightgray" className="bi bi-grid-1x2-fill" viewBox="0 0 16 16">
                             <path d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5z" />
                         </svg>
                     Posts
                 </li>
             </NavLink>
-            <NavLink to="/findFriends" activeClassName="current" exact>
+            <NavLink to="/findFriends" activeClassName="current" exact="true">
                 <li>
                     <i className="fa-solid fa-user-group"></i>
                     Find Friends

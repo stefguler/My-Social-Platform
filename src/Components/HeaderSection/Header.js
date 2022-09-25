@@ -95,7 +95,7 @@ export default function Header() {
     useEffect(() => {
         if (token === undefined) navigate('/')
         updateNotifications();
-    }, [token, request]);
+    }, [token]); //requests inside dependency
 
     const updateNotifications = () => {
 

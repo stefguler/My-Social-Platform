@@ -1,13 +1,13 @@
-import ProfileInfo from "./ProfileHeader/ProfileInfo";
+import ProfileBox from "./ProfileBox/ProfileBox";
 import UserPosts from "./UserPosts/UserPosts";
 import Header from "../HeaderSection/Header";
 import styled from "styled-components";
+import { useState } from "react";
+import  EditProfile from "./EditProfile/EditProfile";
 
 const Img = styled.img`
-  display: flex;
-  width: 95%;
+  width: 100%;
   height: 350px;
-  margin: 0 auto;
 `;
 
 const ProfileSectionContainer = styled.div`
@@ -16,7 +16,6 @@ const ProfileSectionContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 1rem;
 `;
 const UserPostContainer = styled.div`
   width: 100%;
@@ -36,18 +35,25 @@ const UserPostsGrid = styled.div`
   margin-left: 375px;
 `
 
+
+
 export default function ProfileSection() {
-  return (
+  const [isEditing,setIsEditing] = useState(false);
+  const changeIsEditing = () => {
+    setIsEditing(!isEditing)
+  }
+
+return (
     <>
       <Header />
       <ProfileSectionContainer>
         <Img src="user_background.png"></Img>
-        <ProfileInfo />
+        { !isEditing ? <ProfileBox onClick={changeIsEditing}/> : <EditProfile onClick={changeIsEditing} /> }
       </ProfileSectionContainer>
       <UserPostContainer>
         <UserPostsGrid>
-          <UserPosts />
-          <UserPosts />
+          {/* <UserPosts />
+          <UserPosts /> */}
         </UserPostsGrid>
       </UserPostContainer>
     </>
