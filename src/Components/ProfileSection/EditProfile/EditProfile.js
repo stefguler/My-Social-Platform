@@ -37,9 +37,10 @@ export default function EditProfile(props) {
       job: phone,
       location: location,
       about_me: about,
-      things_user_likes: thingsILike.map(item => {
-        return ({ keyword: item })
-      })
+      things_user_likes: JSON.parse(JSON.stringify(thingsILike))
+      // things_user_likes: thingsILike.map(item => {
+      //   return ({ keyword: item })
+      // })
     }
     console.log(userData)
     const foo = JSON.stringify(userData)
