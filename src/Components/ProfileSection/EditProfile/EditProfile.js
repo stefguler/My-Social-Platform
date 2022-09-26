@@ -101,6 +101,9 @@ export default function EditProfile(props) {
     setLabel(e.target.value)
   }
 
+  const eraseLabelValue = (e) => {
+    e.target.value = '';
+  }
   // const handleEmailChange = (e) => {
   //   setEmail(e.target.value)
   // }
@@ -108,6 +111,7 @@ export default function EditProfile(props) {
   const handleAddLabel = (e) => {
     e.preventDefault();
     setThingsILike(thingsILike => [...thingsILike, label])
+    setLabel('');
   }
 
   const handleDeleteLabelClick = (e) => {
@@ -232,7 +236,7 @@ export default function EditProfile(props) {
             <Col3>
               <div>
                 <label htmlFor='labelAdd'></label>
-                <input name='labelAdd' id='labelAdd' onChange={handleLabelChange} placeholder='Type something...'></input>
+                <input name='labelAdd' id='labelAdd' onChange={handleLabelChange} value={label} placeholder='Type something...'></input>
                 <button onClick={(e) => handleAddLabel(e)}>ADD</button>
               </div>
             </Col3>

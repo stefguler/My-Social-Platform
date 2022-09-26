@@ -90,6 +90,7 @@ align-items: center;
 
 export const MetricContainer = styled.div`
 text-align: start;
+border: 2px transparent solid !important;
 padding: 1rem;
 cursor: pointer;
   :hover {
