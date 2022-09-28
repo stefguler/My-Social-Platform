@@ -5,6 +5,7 @@ import feedReducer from '../redux/slices/Feed'
 import notificationReducer from '../redux/slices/Notifications'
 import usersReducer from '../redux/slices/Users'
 import postReducer from './slices/Post'
+import profileReducer from './slices/Profile'
 
 export default configureStore({
     reducer: {
@@ -13,5 +14,6 @@ export default configureStore({
         notifications: notificationReducer,
         users: usersReducer,
         post: postReducer,
+        profile: profileReducer,
     }
 });

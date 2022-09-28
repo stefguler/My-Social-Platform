@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import { Container, AvatarContainer, AvatarInfo, Avatar, Name, Address, EditProfile, DetailedInfo, PersonalInfo, Description, About,TitleOne, AboutMe,Hobbies,HobbiesTitle, TitleTwo,MyHobbiesContainer,MyHobbies,  ContactContainer,ContactOne,EmailTitle,Email,ContactTwo,PhoneTitle,Phone, AccountMetrics} from './ProfileBox.styles'
 import { setCurrentUser } from '../../../redux/slices/Auth'
 import Metric from './Metrics/Metric'
+import { setFilter} from '../../../redux/slices/Profile'
 
 export default function ProfileInfo(props) {
     const onclick = props.onClick
+    const dispatch = useDispatch();
     const currentUser = useSelector(state => state.auth.currentUser);
     const token = useSelector(state => state.auth.accessToken);
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [currentFilter, setCurrentFilter] = useState(1)
 
@@ -39,7 +40,10 @@ export default function ProfileInfo(props) {
         }
 
     const handleClick = (e) => {
-        setCurrentFilter(e.target.id)
+        const id = e.target.id
+        setCurrentFilter(id)
+        dispatch(setFilter(id))
+        
     }
 
     const handleEditClick = () => {
@@ -101,8 +105,7 @@ export default function ProfileInfo(props) {
                 </AccountMetrics>
 
             </DetailedInfo> 
-        </Container>
-        
+        </Container>        
     </>
   )
 }
