@@ -12,7 +12,6 @@ export default function RenderMetrics(props) {
     const [dataToRender, setDataToRender] = useState([]);
 
     const getRenderData = async (apiAdress) => {
-        const url = url
         const config = {
             method: "GET",
             headers: new Headers({
@@ -21,7 +20,7 @@ export default function RenderMetrics(props) {
             }),
         }
     
-        await fetch(url, config).then(
+        await fetch(apiAdress, config).then(
             response => response.json())
             .then(
                 data => setDataToRender(data.results))
@@ -30,35 +29,35 @@ export default function RenderMetrics(props) {
     const renderSwitch = (param) => {
         switch (param) {
             case '1':
-                getRenderData('abc'); // render correct api here for my posts
+                getRenderData('https://motion.propulsion-home.ch/backend/api/social/posts/me/'); // render correct api here for my posts
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
                 return dataToRender.map((post, idx) => {
-                        if (user.first_name !== '') return <UserCard key={idx} user={user}/> //should e posts
+                        return <div>I will be a Post soon</div>//<Post key={idx} user={user}/> //should e posts
                     });
             case '2':
-                getRenderData('abc'); // render correct api here for my liked posts
+                getRenderData('https://motion.propulsion-home.ch/backend/api/social/posts/likes/'); // render correct api here for my liked posts
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
                 return dataToRender.map((post, idx) => {
-                        if (user.first_name !== '') return <UserCard key={idx} user={user}/> //should be posts
+                        return <div>I will be a Post soon</div>// <Post key={idx} user={user}/> //should be posts
                     });
             case '3':
-                getRenderData('abc'); // render correct api here for my friends
+                getRenderData('https://motion.propulsion-home.ch/backend/api/social/friends/'); // render correct api here for my friends
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
                 return dataToRender.map((user, idx) => {
                         if (user.first_name !== '') return <UserCard key={idx} user={user}/>
                     });
             case '4':
-                getRenderData('abc'); // render correct api here for my followings
+                getRenderData('https://motion.propulsion-home.ch/backend/api/social/followers/following/'); // render correct api here for my followings
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
                 return dataToRender.map((user, idx) => {
                         if (user.first_name !== '') return <UserCard key={idx} user={user}/>
                     });
             case '5':
-                getRenderData('abc'); // render correct api here my followers
+                getRenderData('https://motion.propulsion-home.ch/backend/api/social/followers/followers/'); // render correct api here my followers
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
                 return dataToRender.map((user, idx) => {
