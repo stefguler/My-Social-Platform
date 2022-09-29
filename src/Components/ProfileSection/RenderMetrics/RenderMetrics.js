@@ -9,7 +9,14 @@ export default function RenderMetrics(props) {
     const currentFilter = props.filter;
     const token = useSelector(state => state.auth.accessToken)
     const socialMetricsFilter = useSelector(state => state.profile.filter)
+    const [apiData, setApiData] = useState([]);
     const [dataToRender, setDataToRender] = useState([]);
+    const [dataChanged, setDataChanged] = useState([true])
+
+    useEffect(() => {
+        setDataToRender(renderSwitch(socialMetricsFilter))
+
+    }, [dataChanged])
 
     const getRenderData = async (apiAdress) => {
         const config = {
@@ -19,11 +26,11 @@ export default function RenderMetrics(props) {
                 "Authorization": `Bearer ${token}`
             }),
         }
-    
+
         await fetch(apiAdress, config).then(
             response => response.json())
             .then(
-                data => setDataToRender(data.results))
+                data => setApiData(data.results))
     }
 
     const renderSwitch = (param) => {
@@ -31,38 +38,43 @@ export default function RenderMetrics(props) {
             case '1':
                 getRenderData('https://motion.propulsion-home.ch/backend/api/social/posts/me/'); // render correct api here for my posts
                 console.log('state: ', socialMetricsFilter)
-                console.log('clicked: ', param)
-                return dataToRender.map((post, idx) => {
-                        return <div>I will be a Post soon</div>//<Post key={idx} user={user}/> //should e posts
-                    });
+                console.log('clicked: ', param)       
+                return apiData.map((post, idx) => {
+                    return <div>I will be a Post soon</div>//<Post key={idx} user={user}/> //should e posts
+                });
+                setDataChanged(dataChanged ? !dataChanged : dataChanged)
             case '2':
                 getRenderData('https://motion.propulsion-home.ch/backend/api/social/posts/likes/'); // render correct api here for my liked posts
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
-                return dataToRender.map((post, idx) => {
-                        return <div>I will be a Post soon</div>// <Post key={idx} user={user}/> //should be posts
-                    });
+                setDataChanged(dataChanged ? !dataChanged : dataChanged)
+                return apiData.map((post, idx) => {
+                    return <div>I will be a Post soon</div>// <Post key={idx} user={user}/> //should be posts
+                });
             case '3':
                 getRenderData('https://motion.propulsion-home.ch/backend/api/social/friends/'); // render correct api here for my friends
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
-                return dataToRender.map((user, idx) => {
-                        if (user.first_name !== '') return <UserCard key={idx} user={user}/>
-                    });
+                setDataChanged(dataChanged ? !dataChanged : dataChanged)
+                return apiData.map((user, idx) => {
+                    if (user.first_name !== '') return <UserCard key={idx} user={user} />
+                });
             case '4':
-                getRenderData('https://motion.propulsion-home.ch/backend/api/social/followers/following/'); // render correct api here for my followings
+                getRenderData('https://motion.propulsion-home.ch/backend/api/social/followers/followers/'); // render correct api here for my followings
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
-                return dataToRender.map((user, idx) => {
-                        if (user.first_name !== '') return <UserCard key={idx} user={user}/>
-                    });
+                setDataChanged(dataChanged ? !dataChanged : dataChanged)
+                return apiData.map((user, idx) => {
+                    if (user.first_name !== '') return <UserCard key={idx} user={user} />
+                });
             case '5':
-                getRenderData('https://motion.propulsion-home.ch/backend/api/social/followers/followers/'); // render correct api here my followers
+                getRenderData('https://motion.propulsion-home.ch/backend/api/social/followers/following/'); // render correct api here my followers
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
-                return dataToRender.map((user, idx) => {
-                        if (user.first_name !== '') return <UserCard key={idx} user={user}/>
-                    });
+                setDataChanged(dataChanged ? !dataChanged : dataChanged)
+                return apiData.map((user, idx) => {
+                    if (user.first_name !== '') return <UserCard key={idx} user={user} />
+                });
             default:
                 console.log('clicked: ', param)
                 console.log('state: ', socialMetricsFilter)
@@ -71,11 +83,16 @@ export default function RenderMetrics(props) {
         }
     }
 
+
+
     return (
-            <MetricsContainer>
-                {
-                    renderSwitch(socialMetricsFilter)
-                }
-            </MetricsContainer>
+        <MetricsContainer>
+
+            {dataToRender.map((item) => {
+                return item
+            })
+            }
+
+        </MetricsContainer>
     )
 }
