@@ -11,12 +11,12 @@ export default function RenderMetrics(props) {
     const socialMetricsFilter = useSelector(state => state.profile.filter)
     const [apiData, setApiData] = useState([]);
     const [dataToRender, setDataToRender] = useState([]);
-    const [dataChanged, setDataChanged] = useState([true])
+
 
     useEffect(() => {
         setDataToRender(renderSwitch(socialMetricsFilter))
 
-    }, [dataChanged])
+    }, [socialMetricsFilter])
 
     const getRenderData = async (apiAdress) => {
         const config = {
@@ -42,12 +42,10 @@ export default function RenderMetrics(props) {
                 return apiData.map((post, idx) => {
                     return <div>I will be a Post soon</div>//<Post key={idx} user={user}/> //should e posts
                 });
-                setDataChanged(dataChanged ? !dataChanged : dataChanged)
             case '2':
                 getRenderData('https://motion.propulsion-home.ch/backend/api/social/posts/likes/'); // render correct api here for my liked posts
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
-                setDataChanged(dataChanged ? !dataChanged : dataChanged)
                 return apiData.map((post, idx) => {
                     return <div>I will be a Post soon</div>// <Post key={idx} user={user}/> //should be posts
                 });
@@ -55,7 +53,6 @@ export default function RenderMetrics(props) {
                 getRenderData('https://motion.propulsion-home.ch/backend/api/social/friends/'); // render correct api here for my friends
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
-                setDataChanged(dataChanged ? !dataChanged : dataChanged)
                 return apiData.map((user, idx) => {
                     if (user.first_name !== '') return <UserCard key={idx} user={user} />
                 });
@@ -63,7 +60,6 @@ export default function RenderMetrics(props) {
                 getRenderData('https://motion.propulsion-home.ch/backend/api/social/followers/followers/'); // render correct api here for my followings
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
-                setDataChanged(dataChanged ? !dataChanged : dataChanged)
                 return apiData.map((user, idx) => {
                     if (user.first_name !== '') return <UserCard key={idx} user={user} />
                 });
@@ -71,7 +67,6 @@ export default function RenderMetrics(props) {
                 getRenderData('https://motion.propulsion-home.ch/backend/api/social/followers/following/'); // render correct api here my followers
                 console.log('state: ', socialMetricsFilter)
                 console.log('clicked: ', param)
-                setDataChanged(dataChanged ? !dataChanged : dataChanged)
                 return apiData.map((user, idx) => {
                     if (user.first_name !== '') return <UserCard key={idx} user={user} />
                 });

@@ -41,7 +41,7 @@ const ProfileSectionContainer = styled.div`
 
 export default function ProfileSection() {
 
-  const socialMetricsFilter = useSelector(state => state.profile.filter)
+  // const socialMetricsFilter = useSelector(state => state.profile.filter)
 
   const [isEditing, setIsEditing] = useState(false);
   const changeIsEditing = () => {
@@ -55,7 +55,7 @@ export default function ProfileSection() {
         <Img src="user_background.png"></Img>
         {!isEditing ? <ProfileBox onClick={changeIsEditing} /> : <EditProfile onClick={changeIsEditing} />}
       </ProfileSectionContainer>
-      <RenderMetrics filter = {socialMetricsFilter}/>
+      <RenderMetrics/>
     </>
   );
 }
