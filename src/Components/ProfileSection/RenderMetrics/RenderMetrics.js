@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setRenderData } from '../../../redux/slices/Profile';
+import { setMetricsList } from '../../../redux/slices/Profile';
 import { MetricsContainer } from './RenderMetrics.styles'
 import UserCard from '../../FindFriendsSection/UserCard';
 
@@ -9,8 +9,7 @@ export default function RenderMetrics() {
     const dispatch = useDispatch();
     const token = useSelector(state => state.auth.accessToken)
     const socialMetricsFilter = useSelector(state => state.profile.filter)
-    const renderdata = useSelector(state => state.profile.renderData)
-    // const [apiData, setApiData] = useState([])
+    const metricsList = useSelector(state => state.profile.metricsList)
     const [renderData, setRenderData] = useState([])
 
     const socialUrl = {
@@ -25,11 +24,8 @@ export default function RenderMetrics() {
     useEffect(() => {
         const endpoint = selectUrl();
         console.log('endpoint: ', endpoint)
-        awaitFetch(endpoint);
+        callRenderData(`${socialUrl.base}${endpoint}`)
         console.log()
-
-
-
     }, [socialMetricsFilter])
 
     const selectUrl = () => {
@@ -62,56 +58,28 @@ export default function RenderMetrics() {
         await fetch(url, config).then(
             response => response.json())
             .then(
-                data => dispatch(setRenderData(data.results)))
+                data => {
+                console.log(data.results);
+                dispatch(setMetricsList(data.results))})
     }
 
-    const prepareRenderData = () => {
-        switch (parseInt(socialMetricsFilter)) {
-            case 1:
-                console.log('state: ', socialMetricsFilter)
-                return renderdata.map((post, idx) => {
-                    return <div key={idx}>I will be a Post soon</div>//<Post key={idx} user={user}/> //should e posts
-                });
-            case 2:
-                console.log('state: ', socialMetricsFilter)
-                return renderdata.map((post, idx) => {
-                    return <div>I will be a Post soon</div>// <Post key={idx} user={user}/> //should be posts
-                });
-            case 3:
-                console.log('state: ', socialMetricsFilter)
-                return renderdata.map((user, idx) => {
-                    if (user.first_name !== '') return <UserCard key={idx} user={user} />
-                });
-            case 4:
-                console.log('state: ', socialMetricsFilter)
-                return renderdata.map((user, idx) => {
-                    if (user.first_name !== '') return <UserCard key={idx} user={user} />
-                });
-            case 5:
-                console.log('state: ', socialMetricsFilter)
-                return renderdata.map((user, idx) => {
-                    if (user.first_name !== '') return <UserCard key={idx} user={user} />
-                });
-            default:
-                console.log('state: ', socialMetricsFilter)
-                console.log('called default')
-                return <h1>case default</h1>;
-        }
-    }
-
-    const awaitFetch = async (endpoint) => {
-        await callRenderData(`${socialUrl.base}${endpoint}`)
-        prepareRenderData()
-    }
 
 
 
     return (
         <MetricsContainer>
-
-            {renderdata.map((item) => {
-                return item
-            })
+            
+            {
+            
+            metricsList.length> 0 ?
+            metricsList.map((item) => {
+                if (item.hasOwnProperty("email")) {
+                    return <UserCard user={item}/>
+                }
+                else {
+                    return <p>I will be a Post soon</p>
+                }
+            }) : <p>No item</p>
             }
 
         </MetricsContainer>
