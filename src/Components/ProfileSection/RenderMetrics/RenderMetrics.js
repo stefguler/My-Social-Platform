@@ -1,24 +1,56 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setRenderData } from '../../../redux/slices/Profile';
 import { MetricsContainer } from './RenderMetrics.styles'
 import UserCard from '../../FindFriendsSection/UserCard';
 
+export default function RenderMetrics() {
 
-export default function RenderMetrics(props) {
-
-    const currentFilter = props.filter;
+    const dispatch = useDispatch();
     const token = useSelector(state => state.auth.accessToken)
     const socialMetricsFilter = useSelector(state => state.profile.filter)
-    const [apiData, setApiData] = useState([]);
-    const [dataToRender, setDataToRender] = useState([]);
+    const renderdata = useSelector(state => state.profile.renderData)
+    // const [apiData, setApiData] = useState([])
+    const [renderData, setRenderData] = useState([])
 
+    const socialUrl = {
+        base: 'https://motion.propulsion-home.ch/backend/api/social/',
+        myPosts: 'posts/me/',
+        myLikes: 'posts/likes/',
+        myFriends: 'friends/',
+        myFollowers: 'followers/followers/',
+        meFollowing: 'followers/following/'
+    }
 
     useEffect(() => {
-        setDataToRender(renderSwitch(socialMetricsFilter))
+        const endpoint = selectUrl();
+        console.log('endpoint: ', endpoint)
+        awaitFetch(endpoint);
+        console.log()
+
+
 
     }, [socialMetricsFilter])
 
-    const getRenderData = async (apiAdress) => {
+    const selectUrl = () => {
+        switch (parseInt(socialMetricsFilter)) {
+            case 1:
+                return socialUrl.myPosts
+            case 2:
+                return socialUrl.myLikes
+            case 3:
+                return socialUrl.myFriends
+            case 4:
+                return socialUrl.myFollowers
+            case 5:
+                return socialUrl.meFollowing
+            default:
+                return socialUrl.myPosts
+        }
+    }
+
+    const callRenderData = async (url) => {
+        console.log('retrieved url: ', url)
         const config = {
             method: "GET",
             headers: new Headers({
@@ -27,55 +59,49 @@ export default function RenderMetrics(props) {
             }),
         }
 
-        await fetch(apiAdress, config).then(
+        await fetch(url, config).then(
             response => response.json())
             .then(
-                data => setApiData(data.results))
+                data => dispatch(setRenderData(data.results)))
     }
 
-    const renderSwitch = (param) => {
-        switch (param) {
-            case '1':
-                getRenderData('https://motion.propulsion-home.ch/backend/api/social/posts/me/'); // render correct api here for my posts
+    const prepareRenderData = () => {
+        switch (parseInt(socialMetricsFilter)) {
+            case 1:
                 console.log('state: ', socialMetricsFilter)
-                console.log('clicked: ', param)       
-                return apiData.map((post, idx) => {
-                    return <div>I will be a Post soon</div>//<Post key={idx} user={user}/> //should e posts
+                return renderdata.map((post, idx) => {
+                    return <div key={idx}>I will be a Post soon</div>//<Post key={idx} user={user}/> //should e posts
                 });
-            case '2':
-                getRenderData('https://motion.propulsion-home.ch/backend/api/social/posts/likes/'); // render correct api here for my liked posts
+            case 2:
                 console.log('state: ', socialMetricsFilter)
-                console.log('clicked: ', param)
-                return apiData.map((post, idx) => {
+                return renderdata.map((post, idx) => {
                     return <div>I will be a Post soon</div>// <Post key={idx} user={user}/> //should be posts
                 });
-            case '3':
-                getRenderData('https://motion.propulsion-home.ch/backend/api/social/friends/'); // render correct api here for my friends
+            case 3:
                 console.log('state: ', socialMetricsFilter)
-                console.log('clicked: ', param)
-                return apiData.map((user, idx) => {
+                return renderdata.map((user, idx) => {
                     if (user.first_name !== '') return <UserCard key={idx} user={user} />
                 });
-            case '4':
-                getRenderData('https://motion.propulsion-home.ch/backend/api/social/followers/followers/'); // render correct api here for my followings
+            case 4:
                 console.log('state: ', socialMetricsFilter)
-                console.log('clicked: ', param)
-                return apiData.map((user, idx) => {
+                return renderdata.map((user, idx) => {
                     if (user.first_name !== '') return <UserCard key={idx} user={user} />
                 });
-            case '5':
-                getRenderData('https://motion.propulsion-home.ch/backend/api/social/followers/following/'); // render correct api here my followers
+            case 5:
                 console.log('state: ', socialMetricsFilter)
-                console.log('clicked: ', param)
-                return apiData.map((user, idx) => {
+                return renderdata.map((user, idx) => {
                     if (user.first_name !== '') return <UserCard key={idx} user={user} />
                 });
             default:
-                console.log('clicked: ', param)
                 console.log('state: ', socialMetricsFilter)
                 console.log('called default')
                 return <h1>case default</h1>;
         }
+    }
+
+    const awaitFetch = async (endpoint) => {
+        await callRenderData(`${socialUrl.base}${endpoint}`)
+        prepareRenderData()
     }
 
 
@@ -83,7 +109,7 @@ export default function RenderMetrics(props) {
     return (
         <MetricsContainer>
 
-            {dataToRender.map((item) => {
+            {renderdata.map((item) => {
                 return item
             })
             }
