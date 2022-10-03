@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setMetricsList } from '../../../redux/slices/Profile';
 import { MetricsContainer } from './RenderMetrics.styles'
 import UserCard from '../../FindFriendsSection/UserCard';
+import PostCard from '../../PostsSection/PostCard';
 
 export default function RenderMetrics() {
 
@@ -10,7 +11,6 @@ export default function RenderMetrics() {
     const token = useSelector(state => state.auth.accessToken)
     const socialMetricsFilter = useSelector(state => state.profile.filter)
     const metricsList = useSelector(state => state.profile.metricsList)
-    const [renderData, setRenderData] = useState([])
 
     const socialUrl = {
         base: 'https://motion.propulsion-home.ch/backend/api/social/',
@@ -72,14 +72,14 @@ export default function RenderMetrics() {
             {
             
             metricsList.length> 0 ?
-            metricsList.map((item) => {
+            metricsList.map((item, idx) => {
                 if (item.hasOwnProperty("email")) {
-                    return <UserCard user={item}/>
+                    return <UserCard key={idx} user={item}/>
                 }
                 else {
-                    return <p>I will be a Post soon</p>
+                    return <PostCard key={idx} post={item}/>
                 }
-            }) : <p>No item</p>
+            }) : null
             }
 
         </MetricsContainer>
