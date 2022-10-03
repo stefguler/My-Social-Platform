@@ -4,6 +4,37 @@ import { setMetricsList } from '../../../redux/slices/Profile';
 import { MetricsContainer } from './RenderMetrics.styles'
 import UserCard from '../../FindFriendsSection/UserCard';
 import PostCard from '../../PostsSection/PostCard';
+import styled from 'styled-components';
+
+
+const UserCardContainer = styled.div`
+    display: grid;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: minmax(auto, 23rem) 1fr 1fr;
+    font-family: 'Luckiest Guy', cursive;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    gap: 1rem 1rem;
+    padding: 1rem; 
+    margin: 15rem auto 0;
+`
+
+const PostCardContainer = styled.div`
+    display: grid;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: minmax(auto, 23rem) 1fr;
+    font-family: 'Luckiest Guy', cursive;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    gap: 1rem 1rem;
+    padding: 1rem; 
+    margin: 15rem auto 0;
+
+`
 
 export default function RenderMetrics() {
 
@@ -59,29 +90,23 @@ export default function RenderMetrics() {
             response => response.json())
             .then(
                 data => {
-                console.log(data.results);
-                dispatch(setMetricsList(data.results))})
+                    console.log(data.results);
+                    dispatch(setMetricsList(data.results))
+                })
     }
 
 
 
 
     return (
-        <MetricsContainer>
-            
-            {
-            
-            metricsList.length> 0 ?
-            metricsList.map((item, idx) => {
-                if (item.hasOwnProperty("email")) {
-                    return <UserCard key={idx} user={item}/>
-                }
-                else {
-                    return <PostCard key={idx} post={item}/>
-                }
-            }) : null
-            }
-
-        </MetricsContainer>
+            metricsList.length > 0 ?
+                metricsList[0].hasOwnProperty("email") ?
+                    <UserCardContainer>
+                        {metricsList.map((item, idx) => <UserCard key={idx} user={item} />)}
+                    </UserCardContainer> :
+                    <PostCardContainer>
+                        {metricsList.map((item, idx) => <PostCard key={idx} post={item} />)}
+                    </PostCardContainer>
+                : null
     )
 }

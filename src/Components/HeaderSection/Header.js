@@ -145,9 +145,7 @@ export default function Header() {
                     </NotificationContainer>
 
                     <ProfileContainer>
-                        <span style={{textTransform: 'uppercase'}}>{currentUser.username}</span>
-                        <span style={{textTransform: 'uppercase'}}>{currentUser.id}</span>
-                        <img src='femaleAvatar.jpg' width="47.5" height='42.5' onClick={() => navigate('/profile')}></img>
+                        <img src={(currentUser.avatar === null) ? 'maleAvatar.jpg' : currentUser.avatar}  width="47.5" height='42.5' onClick={() => navigate('/profile')}></img>
                         <Menudropdown />
                     </ProfileContainer>
                 </HeaderRightContainer>
