@@ -62,6 +62,7 @@ export const TopLeft = styled.div`
     height: 144px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
   `;
 export const Avatar = styled.img`
@@ -71,13 +72,14 @@ export const Avatar = styled.img`
     
     margin: 0 auto;
   `;
-export const UpdateImage = styled.button`
-    width: 155px;
-    height: 40px;
+export const UpdateImageButton = styled.div`
     border: 1px solid lightgrey;
     border-radius: 50px;
     background: #fff;
     font-size: 10px;
+    width: 100%;
+    height: 100%;
+    
     cursor: pointer;
 
     :hover {
@@ -87,11 +89,19 @@ export const UpdateImage = styled.button`
 
   `;
 
+export const UpdateImageContainer = styled.div`
+  display: flex;
+  text-align: center;
+  width: 8rem;
+  height: 40px;
+`;
+
 
 export const BottomLeft = styled.div`
     width: 202px;
-    height: 95px;
+    height: 150px;
     display: flex;
+    gap: 0.1rem;
     flex-direction: column;
     justify-content: space-between;
   `;
@@ -102,6 +112,7 @@ export const DeleteAccount = styled.button`
     border-radius: 50px;
     background-color: #fff;
     font-size:10px;
+    font-style: italic;
     cursor: pointer;
 
     :hover {
@@ -119,7 +130,7 @@ export const Save = styled.button`
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.07);
     border-radius: 30px;
     border: none;
-    color:white;
+    color: white;
     font-size: 10px;
     cursor: pointer;
 
@@ -128,6 +139,22 @@ export const Save = styled.button`
     }
 
   `;
+
+export const Cancel = styled.button`
+    width: 202px;
+    height: 40px;
+    background: #F08080;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.07);
+    border-radius: 30px;
+    border: none;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+
+    :hover {
+      background: lightgreen;
+    }
+`;
 
 export const RightSide = styled.div`
     height: 99%;

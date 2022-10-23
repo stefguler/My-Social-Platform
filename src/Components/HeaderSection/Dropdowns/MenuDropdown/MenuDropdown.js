@@ -26,8 +26,8 @@ export default function Dropdown() {
 
     return (
         <>
-            <DropdownButton onClick={() => handleClick()}>
-                <div >
+            <DropdownButton>
+                <div onClick={() => handleClick()}>
                     <i className="fa-solid fa-ellipsis-vertical"></i>
                 </div>
                 {

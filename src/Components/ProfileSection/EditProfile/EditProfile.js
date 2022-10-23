@@ -1,7 +1,8 @@
-import { Avatar, BottomLeft, DeleteAccount, FormContainer, LeftSide, RightSide, Save, TopLeft, UpdateImage, OuterFormContainer, UploadImageContainer, Col1, LeftCol, Label, Col2, Col3 } from './EditProfile.styles'
+import { Avatar, BottomLeft, DeleteAccount, FormContainer, LeftSide, RightSide, Save, Cancel,TopLeft, OuterFormContainer, UploadImageContainer, Col1, LeftCol, Label, Col2, Col3 } from './EditProfile.styles'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import UploadImageMenu from '../UploadImageMenu'
 
 
 export default function EditProfile(props) {
@@ -17,9 +18,11 @@ export default function EditProfile(props) {
   const [phone, setPhone] = useState(currentUser.job)
   const [password, setPassword] = useState('abcdefg')
   const [label, setLabel] = useState()
+  // const [avatar, setAvatar] = useState()
   const [thingsILike, setThingsILike] = useState(currentUser.things_user_likes)
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
 
   useEffect(() => {
     if (token === undefined) navigate('/')
@@ -120,12 +123,26 @@ export default function EditProfile(props) {
     setThingsILike(thingsILike.filter((e) => (e !== name)))
   }
 
+
+  const handleUploadImage = (e) => {
+
+    
+
+  }
+
+  const [displayUploadImageMenu, setdisplayUploadImageMenu] = useState(false);
+    
+  const handleClickdisplayUploadImageMenu = () => {
+      (displayUploadImageMenu) ? setdisplayUploadImageMenu(!displayUploadImageMenu) : setdisplayUploadImageMenu(true) 
+
+  }
+
+
   const handleDeleteAccount = (e) => {
 
     e.preventDefault()
 
     const url = "https://motion.propulsion-home.ch/backend/api/users/me/"
-    console.log('called')
     const config = {
       method: "DELETE",
       headers: new Headers({
@@ -152,6 +169,12 @@ export default function EditProfile(props) {
     }
   }
 
+  const cancelButton = () => {
+    onclick()
+  }
+
+
+
   return (
     <>
       <OuterFormContainer>
@@ -163,9 +186,10 @@ export default function EditProfile(props) {
           <LeftSide>
             <TopLeft>
               <Avatar src="https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?cs=srgb&dl=pexels-asad-photo-maldives-1591373.jpg&fm=jpg" />
-              <UpdateImage type='button'>
+              <UploadImageMenu></UploadImageMenu>            
+              {/* <UpdateImage type='button' onClick={handleUploadImage}>
                 UPDATE IMAGE
-              </UpdateImage>
+              </UpdateImage> */}
             </TopLeft>
             <BottomLeft>
               <DeleteAccount type="button" onClick={handleDeleteAccount}>
@@ -174,6 +198,9 @@ export default function EditProfile(props) {
               <Save type='submit'
               >SAVE
               </Save>
+              <Cancel type="button" onClick={cancelButton}>
+                CANCEL
+              </Cancel>
             </BottomLeft>
           </LeftSide>
           <RightSide>

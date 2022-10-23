@@ -1,1 +1,1 @@
-export {defaul} from './MenuDropdownElement'
+export {default} from './MenuDropdownElement'

@@ -55,7 +55,7 @@ export default function ProfileSection() {
         <Img src="user_background.png"></Img>
         {!isEditing ? <ProfileBox onClick={changeIsEditing} /> : <EditProfile onClick={changeIsEditing} />}
       </ProfileSectionContainer>
-      <RenderMetrics/>
+      {!isEditing ? <RenderMetrics onClick={changeIsEditing} /> : null}
     </>
   );
 }
