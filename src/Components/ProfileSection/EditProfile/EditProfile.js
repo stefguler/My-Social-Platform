@@ -1,6 +1,6 @@
 import { Avatar, BottomLeft, DeleteAccount, FormContainer, LeftSide, RightSide, Save, Cancel,TopLeft, OuterFormContainer, UploadImageContainer, Col1, LeftCol, Label, Col2, Col3 } from './EditProfile.styles'
 import { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import UploadImageMenu from '../UploadImageMenu'
 
@@ -18,15 +18,14 @@ export default function EditProfile(props) {
   const [phone, setPhone] = useState(currentUser.job)
   const [password, setPassword] = useState('abcdefg')
   const [label, setLabel] = useState()
-  // const [avatar, setAvatar] = useState()
+  const avatar = useSelector(state => state.auth.accessToken)
   const [thingsILike, setThingsILike] = useState(currentUser.things_user_likes)
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
 
   useEffect(() => {
     if (token === undefined) navigate('/')
-  }, [token]); //currentFilter
+  }, [token, avatar]); //currentFilter
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -40,11 +39,10 @@ export default function EditProfile(props) {
       job: phone,
       location: location,
       about_me: about,
+      // avatar: avatar,
       things_user_likes: JSON.parse(JSON.stringify(thingsILike))
-      // things_user_likes: thingsILike.map(item => {
-      //   return ({ keyword: item })
-      // })
     }
+
     console.log(userData)
     const foo = JSON.stringify(userData)
     console.log(foo)
@@ -70,8 +68,6 @@ export default function EditProfile(props) {
       )
 
   }
-
-
 
   const handleFirstnameChange = (e) => {
     setFirstname(e.target.value)
@@ -123,21 +119,6 @@ export default function EditProfile(props) {
     setThingsILike(thingsILike.filter((e) => (e !== name)))
   }
 
-
-  const handleUploadImage = (e) => {
-
-    
-
-  }
-
-  const [displayUploadImageMenu, setdisplayUploadImageMenu] = useState(false);
-    
-  const handleClickdisplayUploadImageMenu = () => {
-      (displayUploadImageMenu) ? setdisplayUploadImageMenu(!displayUploadImageMenu) : setdisplayUploadImageMenu(true) 
-
-  }
-
-
   const handleDeleteAccount = (e) => {
 
     e.preventDefault()
@@ -169,7 +150,7 @@ export default function EditProfile(props) {
     }
   }
 
-  const cancelButton = () => {
+  const handleCancelButton = () => {
     onclick()
   }
 
@@ -195,10 +176,10 @@ export default function EditProfile(props) {
               <DeleteAccount type="button" onClick={handleDeleteAccount}>
                 DELETE ACCOUNT
               </DeleteAccount>
-              <Save type='submit'
-              >SAVE
+              <Save type='submit'>
+                SAVE
               </Save>
-              <Cancel type="button" onClick={cancelButton}>
+              <Cancel type="button" onClick={handleCancelButton}>
                 CANCEL
               </Cancel>
             </BottomLeft>
@@ -267,9 +248,6 @@ export default function EditProfile(props) {
                 <button onClick={(e) => handleAddLabel(e)}>ADD</button>
               </div>
             </Col3>
-
-
-
           </RightSide>
         </FormContainer>
       </OuterFormContainer>

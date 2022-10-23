@@ -74,12 +74,14 @@ export const Avatar = styled.img`
   `;
 export const UpdateImageButton = styled.div`
     border: 1px solid lightgrey;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
     border-radius: 50px;
     background: #fff;
     font-size: 10px;
-    width: 100%;
-    height: 100%;
-    
+    width: 8rem;
+    height: 40px;
     cursor: pointer;
 
     :hover {
@@ -90,10 +92,7 @@ export const UpdateImageButton = styled.div`
   `;
 
 export const UpdateImageContainer = styled.div`
-  display: flex;
-  text-align: center;
-  width: 8rem;
-  height: 40px;
+
 `;
 
 
@@ -105,6 +104,7 @@ export const BottomLeft = styled.div`
     flex-direction: column;
     justify-content: space-between;
   `;
+
 export const DeleteAccount = styled.button`
     width: 202px;
     height: 40px;
@@ -121,7 +121,6 @@ export const DeleteAccount = styled.button`
     }
 
   `;
-
 
 export const Save = styled.button`
     width: 202px;

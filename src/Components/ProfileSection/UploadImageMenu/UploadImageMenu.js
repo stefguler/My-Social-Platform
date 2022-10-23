@@ -10,7 +10,7 @@ export default function UploadImageMenu() {
 
   const [display, setDisplay] = useState(false);
 
-  const handleClick = (e) => {
+  const changeSetDisplayed = (e) => {
     e.preventDefault();
     console.log('display: ', display);
     (display) ? setDisplay(!display) : setDisplay(true)
@@ -19,11 +19,11 @@ export default function UploadImageMenu() {
   return (
     <>
       <UpdateImageContainer>
-        <UpdateImageButton onClick={(e) => handleClick(e)}>
-          UPLOAD IMAGE
+        <UpdateImageButton onClick={(e) => changeSetDisplayed(e)}>
+            UPLOAD IMAGE
         </UpdateImageButton>
         {
-          (display) ? <UploadImageMenuElement /> : null
+          (display) ? <UploadImageMenuElement onClick={changeSetDisplayed} /> : null
         }
       </UpdateImageContainer>
     </>

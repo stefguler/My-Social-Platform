@@ -5,6 +5,7 @@ export const ProfileSlice = createSlice({
     initialState: {
         filter: 2,
         metricsList: [],
+        avatar: undefined,
     },
     reducers: {
         setFilter: (state, action) => {
@@ -15,9 +16,12 @@ export const ProfileSlice = createSlice({
                 state.metricsList = action.payload :
                 state.metricsList = [];
         },
+        setNewAvatar: (state, action) => {
+            state.avatar = action.payload
+        },
     }
 })
 
 
-export const { setFilter, setMetricsList } = ProfileSlice.actions;
+export const { setFilter, setMetricsList, setNewAvatar } = ProfileSlice.actions;
 export default ProfileSlice.reducer;
