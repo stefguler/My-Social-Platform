@@ -32,7 +32,7 @@ Browse network of users to **connect** with new users
 
 
 ### Find Friends
-![user_profile](https://user-images.githubusercontent.com/93710089/203817801-354e2063-9c53-4b51-9ba7-26d1cb7214d7.jpg)
+![FindFriends](https://user-images.githubusercontent.com/93710089/203818277-37108561-c8f7-4f75-ab82-721718de808b.JPG)
 
 
 ### User Profile
@@ -41,3 +41,12 @@ Browse network of users to **connect** with new users
 
 ## Backend / GitLab / GitHub
 The project was developed using an existing backend. Project will be updated with another backend and then using Docker and GitLab CI/CD for deplyoment and DevOps. This is a project for practicing purpose and is always updated.
+
+## Team
+Thank you so much for all your contribution during the set up of this project and your initial work:
+<ul>
+<li>Miri Yoo https://www.linkedin.com/in/miriyoodev/)</li>
+<li>Jeison Rodriguez Salamanca https://www.linkedin.com/in/jeisonrodriguez/</li>
+<li>Eugene Samarin https://www.linkedin.com/in/eugene-samarin/</li>
+</ul>
+
