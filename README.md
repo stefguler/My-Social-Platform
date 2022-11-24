@@ -45,7 +45,7 @@ The project was developed using an existing backend. Project will be updated wit
 ## Team
 Thank you so much for all your contribution during the set up of this project and your initial work:
 <ul>
-<li>Miri Yoo https://www.linkedin.com/in/miriyoodev/)</li>
+<li>Miri Yoo https://www.linkedin.com/in/miriyoodev/</li>
 <li>Jeison Rodriguez Salamanca https://www.linkedin.com/in/jeisonrodriguez/</li>
 <li>Eugene Samarin https://www.linkedin.com/in/eugene-samarin/</li>
 </ul>
